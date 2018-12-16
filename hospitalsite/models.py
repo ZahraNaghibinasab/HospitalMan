@@ -14,7 +14,7 @@ class User(models.Model):
     # 3 for nurse
     # 4 for accountant
     # 5 for manager
-    weight = models.FloatField()
+    weight = models.FloatField(blank=False)
     height = models.IntegerField()
     gender = models.IntegerField()
     # 0 for  men
@@ -42,4 +42,11 @@ class Reception(models.Model):
 
 class Patient(models.Model):
     idP = models.ForeignKey(User,on_delete=models.CASCADE)
+
+class DrugStore(models.Model):
+    idDrug = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=50)
+    expiredDate = models.CharField(max_length=11)
+
+
 
