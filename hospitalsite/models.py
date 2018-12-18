@@ -4,25 +4,25 @@ from django.db import models
 
 class User(models.Model):
     id = models.CharField(max_length=6, primary_key=True)
-    Email = models.CharField(max_length=60)
+    # Email = models.CharField(max_length=60, blank=True, null=True)
     name = models.CharField(max_length=100)
-    tel = models.CharField(max_length=15)
-    role = models.IntegerField()
-    # 0 for doctor
-    # 1 for patient
-    # 2 for reception
-    # 3 for nurse
-    # 4 for accountant
-    # 5 for manager
-    weight = models.FloatField(blank=False)
-    height = models.IntegerField()
-    gender = models.IntegerField()
-    # 0 for  men
-    # 1 for women
-    # 2 for others
-    age = models.IntegerField()
-    address = models.TextField()
-    postalCode = models.CharField(max_length=10)
+    # tel = models.CharField(max_length=15, blank=True, null=True)
+    # role = models.IntegerField(blank=True, null=True)
+    # # 0 for doctor
+    # # 1 for patient
+    # # 2 for reception
+    # # 3 for nurse
+    # # 4 for accountant
+    # # 5 for manager
+    # weight = models.FloatField( blank=True, null=True)
+    # height = models.IntegerField(blank=True, null=True)
+    # gender = models.IntegerField(blank=True, null=True)
+    # # 0 for  men
+    # # 1 for women
+    # # 2 for others
+    # age = models.IntegerField(blank=True, null=True)
+    # address = models.TextField(blank=True, null=True)
+    # postalCode = models.CharField(max_length=10, blank=True, null=True)
 
 
 class Manager(models.Model):

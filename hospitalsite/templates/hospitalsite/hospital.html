@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="static/css/hospitalman.css">
     <title>Hospital Site</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
+			<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 			<div>Hospital<span> Panel</span></div>
+
 		</div>
 		<br>
-		<div class="login">
-				<input type="text" placeholder="username" name="user"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login">
-		</div>
+ 		<form method="POST" class="login">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+
+			<!--<div class="login">-->
+					<!--<input type="text" placeholder="username" name="user"><br>-->
+					<!--<input type="password" placeholder="password" name="password"><br>-->
+					<!--<input type="button" value="Login">-->
+			<!--</div>-->
+ 		</form>
 </body>
 </html>
