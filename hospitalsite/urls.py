@@ -4,4 +4,5 @@ from hospitalsite import views
 urlpatterns = [
     # path('', views.hospital, name='hospital'),
     path('', views.login, name='login'),
+    path('signin/',views.signin, name='signin'),
 ]

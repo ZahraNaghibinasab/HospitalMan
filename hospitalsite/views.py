@@ -11,6 +11,8 @@ from django.shortcuts import redirect
 #     drugs = DrugStore.objects.filter(expiredDate='1398')
 #     return render(request, 'hospitalsite/hospital.html', {'drugs': drugs})
 
+def signin(request):
+    return render(request,'hospitalsite/signin.html')
 
 def login(request):
     if request.method == "POST":

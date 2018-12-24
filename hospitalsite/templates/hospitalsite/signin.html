@@ -3,11 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/hospitalman.css' %}">
-    <title>Hospital Login</title>
+    <link rel="stylesheet" href="{% static 'css/signIn.css' %}">
+    <title>Hospital Sign in</title>1
 
 </head>
 <body>
+<a href="{% url 'signin' %}">Signin</a>
 <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
@@ -17,8 +18,11 @@
 		<div class="login">
 				<input type="text" placeholder="username" name="user"><br>
 				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login"><br>
-				<a href="signin">dont you have an acount? </a>
+                <input type="text" placeholder="phone number" name="user"><br>
+                <input type="text" placeholder="E-mail" name="user"><br>
+				<input type="button" value="Login">
+                <a href="../">already have an account? </a>
+
 		</div>
 </body>
 </html>
