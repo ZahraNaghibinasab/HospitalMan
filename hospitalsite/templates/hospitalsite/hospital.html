@@ -15,10 +15,14 @@
 		</div>
 		<br>
 		<div class="login">
-				<input type="text" placeholder="username" name="user"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login"><br>
+			<form action="success/" method="post">
+				{% csrf_token %}
+
+				<input type="text" placeholder="username" name="name"><br>
+				<!--<input type="password" placeholder="password" name="password"><br>-->
+				<input type="submit" value="Login"><br>
 				<a href="signin">dont you have an acount? </a>
+			</form>
 		</div>
 </body>
 </html>

@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd02a3ea-1d83-497f-a74f-2cca0abe54c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hospitalsite/static/css/signIn.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HospitalMan/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/HospitalMan/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalsite/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospitalsite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospitalsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/views.py" afterDir="false" />
@@ -18,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hospitalsite/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+            <state relative-caret-position="240">
+              <caret line="26" column="28" selection-start-line="26" selection-end-line="27" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -31,15 +29,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html">
+        <entry file="file://$PROJECT_DIR$/hospitalsite/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+            <state relative-caret-position="272">
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="21" column="67" lean-forward="true" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signin.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -60,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+            <state relative-caret-position="119">
+              <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -85,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/hospitalsite/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -129,15 +136,15 @@
         <option value="$PROJECT_DIR$/hospitalsite/admin.py" />
         <option value="$PROJECT_DIR$/hospitalsite/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/hospitalsite/static/css/hospitalman.css" />
-        <option value="$PROJECT_DIR$/hospitalsite/forms.py" />
         <option value="$PROJECT_DIR$/hospitalsite/models.py" />
         <option value="$PROJECT_DIR$/hospitalsite/static/css/signIn.css" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html" />
-        <option value="$PROJECT_DIR$/hospitalsite/views.py" />
         <option value="$PROJECT_DIR$/HospitalMan/urls.py" />
-        <option value="$PROJECT_DIR$/hospitalsite/urls.py" />
-        <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signin.html" />
+        <option value="$PROJECT_DIR$/hospitalsite/urls.py" />
+        <option value="$PROJECT_DIR$/hospitalsite/views.py" />
+        <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html" />
+        <option value="$PROJECT_DIR$/hospitalsite/forms.py" />
       </list>
     </option>
   </component>
@@ -300,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545152384524</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="signIn and logIn URLS are connected now">
+      <created>1545659342022</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1545659342022</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -329,7 +343,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create html file&#10;query to drug store table with filter" />
     <MESSAGE value="create html and css template for login page" />
-    <option name="LAST_COMMIT_MESSAGE" value="create html and css template for login page" />
+    <MESSAGE value="signIn and logIn URLS are connected now" />
+    <option name="LAST_COMMIT_MESSAGE" value="signIn and logIn URLS are connected now" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HospitalMan/blog/urls.py" />
@@ -399,22 +414,29 @@
     <entry file="file://$PROJECT_DIR$/hospitalsite/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/1.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/forms.py">
+    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        <state relative-caret-position="204">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signIn.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="140" column="1" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospitalsite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -429,44 +451,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/urls.py">
+    <entry file="file://$PROJECT_DIR$/hospitalsite/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signIn.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="140" column="1" selection-start-line="140" selection-start-column="1" selection-end-line="140" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+        <state relative-caret-position="189">
+          <caret line="21" column="67" lean-forward="true" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospitalsite/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+        <state relative-caret-position="240">
+          <caret line="26" column="28" selection-start-line="26" selection-end-line="27" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
         </state>
       </provider>
     </entry>
