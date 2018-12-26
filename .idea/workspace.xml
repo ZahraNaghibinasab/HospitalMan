@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fd02a3ea-1d83-497f-a74f-2cca0abe54c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/static/css/hospitalman.css" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/static/css/signUp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/static/css/signIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/static/css/signIn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HospitalMan/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/HospitalMan/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalsite/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +18,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
+            <state relative-caret-position="153">
               <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -33,13 +30,45 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+            <state relative-caret-position="493">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#22#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HospitalMan/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hospitalsite/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
@@ -51,7 +80,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signIn.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
+            <state relative-caret-position="2193">
               <caret line="129" column="1" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
             </state>
           </provider>
@@ -69,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signUp.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="1734">
               <caret line="102" column="17" selection-end-line="129" selection-end-column="1" />
             </state>
           </provider>
@@ -78,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="119">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -110,7 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/hospitalsite/blog/urls.py" />
         <option value="$PROJECT_DIR$/HospitalMan/blog/urls.py" />
         <option value="$PROJECT_DIR$/blog/urls.py" />
@@ -119,10 +147,7 @@
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospital_list.html" />
         <option value="$PROJECT_DIR$/hospitalsite/hospitalsite_list.html" />
         <option value="$PROJECT_DIR$/hospitalsite/template/hospitalsite/hospital.html" />
-        <option value="$PROJECT_DIR$/HospitalMan/settings.py" />
-        <option value="$PROJECT_DIR$/hospitalsite/admin.py" />
         <option value="$PROJECT_DIR$/hospitalsite/migrations/0001_initial.py" />
-        <option value="$PROJECT_DIR$/hospitalsite/models.py" />
         <option value="$PROJECT_DIR$/HospitalMan/urls.py" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signin.html" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/hospital.html" />
@@ -134,6 +159,10 @@
         <option value="$PROJECT_DIR$/hospitalsite/static/css/signUp.css" />
         <option value="$PROJECT_DIR$/hospitalsite/static/css/signIn.css" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html" />
+        <option value="$PROJECT_DIR$/hospitalsite/models.py" />
+        <option value="$PROJECT_DIR$/hospitalsite/admin.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/HospitalMan/settings.py" />
       </list>
     </option>
   </component>
@@ -148,7 +177,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -166,42 +194,11 @@
               <item name="HospitalMan" type="462c0819:PsiDirectoryNode" />
               <item name="hospitalsite" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="HospitalMan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HospitalMan" type="462c0819:PsiDirectoryNode" />
-              <item name="hospitalsite" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HospitalMan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HospitalMan" type="462c0819:PsiDirectoryNode" />
-              <item name="hospitalsite" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HospitalMan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HospitalMan" type="462c0819:PsiDirectoryNode" />
-              <item name="hospitalsite" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HospitalMan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HospitalMan" type="462c0819:PsiDirectoryNode" />
-              <item name="hospitalsite" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HospitalMan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HospitalMan" type="462c0819:PsiDirectoryNode" />
-              <item name="hospitalsite" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="hospitalsite" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -316,23 +313,30 @@
       <option name="project" value="LOCAL" />
       <updated>1545663701502</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="simple user added to data base">
+      <created>1545832463825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1545832463825</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24330357" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24330357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.58919805" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.049099836" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5040917" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
@@ -364,30 +368,6 @@
           <folding>
             <element signature="e#227#236#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HospitalMan/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -423,40 +403,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/migrations/0001_initial.py">
+    <entry file="file://$PROJECT_DIR$/hospitalsite/migrations/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/hospitalsite/migrations/0001_initial.py" />
+    <entry file="file://$PROJECT_DIR$/hospitalsite/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        <state relative-caret-position="153">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/urls.py">
+    <entry file="file://$PROJECT_DIR$/hospitalsite/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="119">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/views.py">
+    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="357">
+          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signIn.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2193">
+          <caret line="129" column="1" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -469,22 +455,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signUp.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="1734">
           <caret line="102" column="17" selection-end-line="129" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signIn.css">
+    <entry file="file://$PROJECT_DIR$/hospitalsite/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="129" column="1" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
+        <state relative-caret-position="119">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html">
+    <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+        <state>
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HospitalMan/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
         </state>
       </provider>
     </entry>
