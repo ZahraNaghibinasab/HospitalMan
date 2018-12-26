@@ -124,3 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'hospitalman.DB'
+EMAIL_HOST_PASSWORD = '9312432262'
+EMAIL_USE_TLS = True
