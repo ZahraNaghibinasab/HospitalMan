@@ -22,9 +22,11 @@ def signUp(request):
 def success(request):
     if request.method == "POST":
         form = UserForm(request.POST)
+        print("hi")
         if form.is_valid():
-            user = User(id=44, name=str(form.cleaned_data['name']))
+            user = User(name=str(form.cleaned_data['name']), id=str(form.cleaned_data['id']), tel=str(form.cleaned_data['tel']), Email=str(form.cleaned_data['Email']))
             print("name: " + form.cleaned_data['name'])
             user.save()
+
 
     return HttpResponse("Success!")
