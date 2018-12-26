@@ -68,20 +68,9 @@ body{
 	z-index: 2;
 }
 
-.login input[type=text]{
-	width: 250px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
-	border-radius: 2px;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 4px;
-}
 
-.login input[type=password]{
+
+.login input{
 	width: 250px;
 	height: 30px;
 	background: transparent;
@@ -95,7 +84,7 @@ body{
 	margin-top: 10px;
 }
 
-.login input[type=button]{
+#button{
 	width: 260px;
 	height: 35px;
 	background: #fff;
@@ -110,11 +99,11 @@ body{
 	margin-top: 10px;
 }
 
-.login input[type=button]:hover{
+#button:hover{
 	opacity: 0.8;
 }
 
-.login input[type=button]:active{
+#button:active{
 	opacity: 0.6;
 }
 
@@ -123,12 +112,12 @@ body{
 	border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=password]:focus{
+#button:focus{
 	outline: none;
 	border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=button]:focus{
+#button:focus{
 	outline: none;
 }
 

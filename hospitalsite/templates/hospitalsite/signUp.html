@@ -3,12 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/signIn.css' %}">
-    <title>Hospital Sign in</title>1
+    <link rel="stylesheet" href="{% static 'css/signUp.css' %}">
+    <title>Hospital Login</title>
 
 </head>
 <body>
-<a href="{% url 'signin' %}">Signin</a>
 <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
@@ -16,13 +15,16 @@
 		</div>
 		<br>
 		<div class="login">
+			<form action="success/" method="post">
+				{% csrf_token %}
+
 				<input type="text" placeholder="username" name="user"><br>
 				<input type="password" placeholder="password" name="password"><br>
                 <input type="text" placeholder="phone number" name="user"><br>
                 <input type="text" placeholder="E-mail" name="user"><br>
-				<input type="button" value="Login">
-                <a href="../">already have an account? </a>
-
+				<input type="submit" value="Login" id="button"><br>
+				<a href="signIn">already have an account?</a>
+			</form>
 		</div>
 </body>
 </html>

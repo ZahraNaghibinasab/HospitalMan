@@ -10,13 +10,13 @@ from django.http import HttpResponse
 
 # def hospital(request):
 #     drugs = DrugStore.objects.filter(expiredDate='1398')
-#     return render(request, 'hospitalsite/hospital.html', {'drugs': drugs})
+#     return render(request, 'hospitalsite/signUp.html', {'drugs': drugs})
 
-def signin(request):
-    return render(request,'hospitalsite/signin.html')
+def signIn(request):
+    return render(request,'hospitalsite/signIn.html')
 
-def login(request):
-    return render(request, 'hospitalsite/hospital.html')
+def signUp(request):
+    return render(request, 'hospitalsite/signUp.html')
 
 
 def success(request):
