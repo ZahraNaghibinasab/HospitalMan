@@ -8,5 +8,6 @@ urlpatterns = [
     path('success/',views.success, name='success'),
     path('managerPanel/', views.managerPanel, name='managerPanel'),
     path('managerPanel/edit/', views.edit, name='edit'),
+    path('managerPanel/edit/editSuccess/', views.editSuccess, name='editSuccess'),
 
 ]

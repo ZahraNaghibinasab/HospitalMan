@@ -31,14 +31,14 @@
   {{m.postalCode}}
     {% endfor %}
   </p>
-        <form action="../" method="post">
+        <form action=" editSuccess/" method="post">
                 {% csrf_token %}
 				<input type="text" placeholder="username" name="name"><br>
                 <input type="text" placeholder="phone number" name="tel"><br>
-				<input type="text" placeholder="weight" name="weight"><br>
-				<input type="text" placeholder="height" name="height"><br>
-				<input type="text" placeholder="gender" name="gender"><br>
-				<input type="text" placeholder="age" name="age"><br>
+				<input type="number" placeholder="weight" name="weight"><br>
+				<input type="number" placeholder="height" name="height"><br>
+				<input type="number" placeholder="gender" name="gender"><br>
+				<input type="number" placeholder="age" name="age"><br>
 				<input type="text" placeholder="address" name="address"><br>
 				<input type="text" placeholder="postalCode" name="postalCode"><br>
 
