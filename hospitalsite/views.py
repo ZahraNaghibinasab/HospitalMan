@@ -24,12 +24,8 @@ def success(request):
         form = UserForm(request.POST)
         if form.is_valid():
             cursor = connection.cursor()
-            query ="INSERT INTO hospitalsite_user ('name' , 'id' , 'tel' , 'Email') VALUES (%s,%s,%s,%s) ", [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
-            print (query)
-            cursor.execute(query)
-            # user = User(name=str(form.cleaned_data['name']), id=str(form.cleaned_data['id']), tel=str(form.cleaned_data['tel']), Email=str(form.cleaned_data['Email']))
-            # print("name: " + form.cleaned_data['name'])
-            # user.save()
+            cursor.execute('INSERT INTO hospitalsite_user (name , id , tel , Email) VALUES (%s , %s , %s , %s) ', [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
+)
 
 
     return HttpResponse("Success!")
