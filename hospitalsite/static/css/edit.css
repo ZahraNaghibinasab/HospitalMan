@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+h3{
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left: 50px;
+}
+
+h2{
+	color: #000000;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left: 50px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.login{
+	position: absolute;
+	top: calc(50% - 75px);
+	left: calc(25% - 50px);
+	height: 150px;
+	width: 150px;
+	padding: 10px;
+	z-index: 2;
+}
+
+
+
+.login input{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(0,0,0,0.6);
+	border-radius: 2px;
+	color: #000000;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.login input:focus{
+	outline: none;
+	border: 1px solid #556B2F;
+}
+
+
+::-webkit-input-placeholder{
+   color: #556B2F;
+}
+
+::-moz-input-placeholder{
+   color: #556B2F;
+
+}

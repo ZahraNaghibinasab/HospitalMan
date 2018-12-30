@@ -3,34 +3,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+
     <title>Edit</title>
 
 </head>
 <body>
+<div class="row">
+    <div class="column">
   <p>
     {% for m in manager %}
     <h3>NAME:</h3>
-    {{m.name}}
+  <h2>{{m.name}}</h2>
     <h3>ID:</h3>
-    {{m.id}}
+  <h2>{{m.id}}</h2>
     <h3>E-MAIL:</h3>
-    {{m.Email}}
+   <h2>{{m.Email}}</h2>
     <h3>TEL-NUMBER:</h3>
-    {{m.tel}}
+  <h2>{{m.tel}}</h2>
     <h3>Weight:</h3>
-    {{m.weight}}
+   <h2>{{m.weight}}</h2>
     <h3>Height:</h3>
-    {{m.height}}
+   <h2> {{m.height}}</h2>
   <h3>Gender:</h3>
-  {{m.gender}}
+  <h2>{{m.gender}}</h2>
   <h3>Age:</h3>
-  {{m.age}}
+  <h2>{{m.age}}</h2>
   <h3>Address:</h3>
-  {{m.address}}
+  <h2>{{m.address}}</h2>
   <h3>Postal Code:</h3>
-  {{m.postalCode}}
+  <h2>{{m.postalCode}}</h2>
     {% endfor %}
   </p>
+    </div>
+    <div class="column">
+        <div class="login">
         <form action=" editSuccess/" method="post">
                 {% csrf_token %}
 				<input type="text" placeholder="username" name="name"><br>
@@ -46,6 +53,8 @@
 				<input type="submit" value="submit" id="button"><br>
 
         </form>
-
+        </div>
+    </div>
+</div>
 </body>
 </html>
