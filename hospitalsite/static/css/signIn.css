@@ -5,7 +5,6 @@ body{
 	margin: 0;
 	padding: 0;
 	background: #fff;
-
 	color: #fff;
 	font-family: Arial;
 	font-size: 12px;
@@ -21,8 +20,8 @@ body{
 	height: auto;
 	background-image:url("1.jpg");
 	background-size: cover;
-
 	z-index: 0;
+
 }
 
 .grad{

@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/signUp.css' %}">
-    <title>Hospital Login</title>
+    <link rel="stylesheet" href="{% static 'css/signIn.css' %}">
+    <title>Hospital Sign in</title>
 
 </head>
 <body>
@@ -17,7 +17,6 @@
 		<div class="login">
 			<form action="success/" method="post">
 				{% csrf_token %}
-
 				<input type="text" placeholder="username" name="name"><br>
 				<input type="id" placeholder="id" name="id"><br>
                 <input type="text" placeholder="phone number" name="tel"><br>

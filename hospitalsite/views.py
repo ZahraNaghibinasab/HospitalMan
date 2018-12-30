@@ -30,3 +30,11 @@ def success(request):
 
 
     return HttpResponse("Success!")
+
+def managerPanel(request):
+    manager = User.objects.filter(role = '5')
+    return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
+
+def edit(request):
+    manager = User.objects.filter(role = '5')
+    return render(request, 'hospitalsite/edit.html',{'manager':manager})
