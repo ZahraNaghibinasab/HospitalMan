@@ -4,7 +4,7 @@ from .models import DrugStore
 from .forms import UserForm
 from django.shortcuts import redirect
 from django.http import HttpResponse
-
+from django.db import connection
 
 # Create your views here.
 
@@ -22,19 +22,23 @@ def signUp(request):
 def success(request):
     if request.method == "POST":
         form = UserForm(request.POST)
-        print("hi")
         if form.is_valid():
-            user = User(name=str(form.cleaned_data['name']), id=str(form.cleaned_data['id']), tel=str(form.cleaned_data['tel']), Email=str(form.cleaned_data['Email']))
-            print("name: " + form.cleaned_data['name'])
-            user.save()
+            cursor = connection.cursor()
+            query ="INSERT INTO hospitalsite_user ('name' , 'id' , 'tel' , 'Email') VALUES (%s,%s,%s,%s) ", [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
+            print (query)
+            cursor.execute(query)
+            # user = User(name=str(form.cleaned_data['name']), id=str(form.cleaned_data['id']), tel=str(form.cleaned_data['tel']), Email=str(form.cleaned_data['Email']))
+            # print("name: " + form.cleaned_data['name'])
+            # user.save()
 
 
     return HttpResponse("Success!")
 
 def managerPanel(request):
-    manager = User.objects.filter(role = '5')
+    manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
+    print(manager)
     return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
 
 def edit(request):
-    manager = User.objects.filter(role = '5')
+    manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
     return render(request, 'hospitalsite/edit.html',{'manager':manager})

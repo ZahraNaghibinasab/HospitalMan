@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd02a3ea-1d83-497f-a74f-2cca0abe54c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/edit.html" afterDir="false" />
+    <list default="true" id="fd02a3ea-1d83-497f-a74f-2cca0abe54c7" name="Default Changelist" comment="panel manager show identities &#10;page edit for manager">
+      <change afterPath="$PROJECT_DIR$/hospitalsite/static/css/panelManager.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/static/css/signIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/static/css/signIn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalsite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospitalsite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalsite/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="39" column="70" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+            <state relative-caret-position="190">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -45,17 +41,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/panelManager.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state relative-caret-position="411">
+              <caret line="45" column="70" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/edit.html">
+        <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/panelManager.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            <state relative-caret-position="94">
+              <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -63,17 +59,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="14" lean-forward="true" selection-end-line="26" selection-end-column="7" />
+            <state relative-caret-position="187">
+              <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signUp.html">
+        <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signIn.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+            <state>
+              <caret line="85" selection-start-line="85" selection-end-line="107" />
             </state>
           </provider>
         </entry>
@@ -131,9 +127,10 @@
         <option value="$PROJECT_DIR$/hospitalsite/urls.py" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signUp.html" />
+        <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/edit.html" />
         <option value="$PROJECT_DIR$/hospitalsite/views.py" />
         <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/panelManager.html" />
-        <option value="$PROJECT_DIR$/hospitalsite/templates/hospitalsite/edit.html" />
+        <option value="$PROJECT_DIR$/hospitalsite/static/css/panelManager.css" />
       </list>
     </option>
   </component>
@@ -339,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545840978354</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="panel manager show identities &#10;page edit for manager">
+      <created>1546170580413</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1546170580413</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -360,14 +364,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.58919805" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39443535" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.049099836" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.50074404" side_tool="true" visible="true" weight="0.049099836" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -382,7 +386,34 @@
     <MESSAGE value="nurse table was dropped" />
     <MESSAGE value="merge with send mail" />
     <MESSAGE value="sign Up user is completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="sign Up user is completed" />
+    <MESSAGE value="panel manager show identities &#10;page edit for manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="panel manager show identities &#10;page edit for manager" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/hospitalsite/views.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/hospitalsite/views.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/hospitalsite/views.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/hospitalsite/views.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HospitalMan/blog/urls.py" />
@@ -472,10 +503,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signUp.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1358">
+          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signUp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="507">
           <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="33" column="41" lean-forward="true" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -491,36 +543,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signIn.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="26" selection-start-line="26" selection-end-line="37" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/signUp.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1358">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+        <state>
+          <caret line="85" selection-start-line="85" selection-end-line="107" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signIn.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" lean-forward="true" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/signUp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+        <state relative-caret-position="187">
+          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-end-line="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="39" column="70" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+        <state relative-caret-position="190">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -529,15 +567,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/panelManager.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        <state relative-caret-position="411">
+          <caret line="45" column="70" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospitalsite/templates/hospitalsite/edit.html">
+    <entry file="file://$PROJECT_DIR$/hospitalsite/static/css/panelManager.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        <state relative-caret-position="94">
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
         </state>
       </provider>
     </entry>
