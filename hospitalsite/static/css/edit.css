@@ -65,7 +65,37 @@ h2{
    color: #556B2F;
 }
 
-::-moz-input-placeholder{
-   color: #556B2F;
+.button::placeholder{
+    color: #000000;
+}
 
+#button:focus{
+	outline: none;
+	border: 1px solid #32CD32;
+}
+
+#button:focus{
+	outline: none;
+}
+#button{
+	width: 260px;
+	height: 35px;
+	background: #32CD32;
+	border: 1px solid #32CD32;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+#button:hover{
+	opacity: 0.8;
+}
+
+#button:active{
+	opacity: 0.6;
 }
