@@ -75,6 +75,7 @@ h2{
 
 
 .column {
+  background: "1.jpg";
   float: left;
   width: 33.33%;
   padding: 15px;

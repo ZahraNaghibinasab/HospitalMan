@@ -24,8 +24,7 @@ def success(request):
         form = UserForm(request.POST)
         if form.is_valid():
             cursor = connection.cursor()
-            cursor.execute('INSERT INTO hospitalsite_user (name , id , tel , Email) \ '
-                           'VALUES (%s , %s , %s , %s) ', [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
+            cursor.execute('INSERT INTO hospitalsite_user (name , id , tel , Email) VALUES (%s , %s , %s , %s) ', [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
 )
 
 
