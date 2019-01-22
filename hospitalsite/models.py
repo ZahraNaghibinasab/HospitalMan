@@ -25,11 +25,6 @@ class User(models.Model):
     address = models.TextField(blank=True, null=True)
     postalCode = models.CharField(max_length=10, blank=True, null=True)
 
-class Reservation(models.Model):
-    idD = models.ForeignKey(User, on_delete=models.CASCADE)
-    time = models.DateTimeField()
-    idP = models.ForeignKey(User, on_delete=models.CASCADE , blank=True, null=True)
-    checked = models.BooleanField(default=False)
 
 class Manager(models.Model):
     idM = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -51,5 +46,10 @@ class DrugStore(models.Model):
     name = models.CharField(max_length=50)
     expiredDate = models.CharField(max_length=11)
 
+class Reservation(models.Model):
+    idD = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    time = models.DateTimeField()
+    idP = models.ForeignKey(Patient, on_delete=models.CASCADE, blank=True, null=True)
+    checked = models.BooleanField(default=False)
 
 

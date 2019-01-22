@@ -15,6 +15,7 @@ from .utils import SQLCommand
 
 
 def signIn(request):
+    #SQLCommand.Reservation('2','2019-03-01 00:00:00.000000','6')
     return render(request,'hospitalsite/signIn.html')
 
 
