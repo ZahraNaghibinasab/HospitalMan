@@ -12,8 +12,10 @@ from django.db import connection
 #     drugs = DrugStore.objects.filter(expiredDate='1398')
 #     return render(request, 'hospitalsite/signUp.html', {'drugs': drugs})
 
+
 def signIn(request):
     return render(request,'hospitalsite/signIn.html')
+
 
 def signUp(request):
     return render(request, 'hospitalsite/signUp.html')
@@ -25,18 +27,19 @@ def success(request):
         if form.is_valid():
             cursor = connection.cursor()
             cursor.execute('INSERT INTO hospitalsite_user (name , id , tel , Email) VALUES (%s , %s , %s , %s) ', [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
-)
-
-
+                           )
     return HttpResponse("Success!")
+
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
     return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
 
+
 def edit(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
     return render(request, 'hospitalsite/edit.html',{'manager':manager})
+
 
 def editSuccess(request):
     if request.method == "POST":
@@ -60,6 +63,5 @@ def editSuccess(request):
             (form.cleaned_data['age']),
             str(form.cleaned_data['address']),
             str(form.cleaned_data['postalCode'])])
-
 
     return HttpResponse("Success!")
