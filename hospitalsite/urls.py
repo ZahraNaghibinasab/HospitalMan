@@ -13,5 +13,9 @@ urlpatterns = [
     path('patientPanel/', views.patientPanel, name='patientPanel'),
     path('reseptionPanel/', views.reseptionPanel, name='reseptionPanel'),
     path('accountantPanel/', views.accountantPanel, name='accountantPanel'),
+    path('doctorPanel/editDoctor/', views.editDoctor, name='editDoctor'),
+    path('patientPanel/editPatient/', views.editPatient, name='editPatient'),
+    path('reseptionPanel/editReseption/', views.editReseption, name='editReseption'),
+    path('accountantPanel/editAccountant/', views.editAccountant, name='editAccountant'),
 
 ]
