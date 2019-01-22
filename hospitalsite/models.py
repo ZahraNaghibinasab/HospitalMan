@@ -7,7 +7,7 @@ class User(models.Model):
     Email = models.CharField(max_length=60, blank=True, null=True)
     name = models.CharField(max_length=100)
     tel = models.CharField(max_length=15, blank=True, null=True)
-    verified = models.BooleanField(default=False)
+    verified = models.BooleanField(default=False, blank=True, null=True)
     password = models.CharField(max_length=20, blank=True, null=True)
     role = models.IntegerField(blank=True, null=True)
     # 1 for doctor
