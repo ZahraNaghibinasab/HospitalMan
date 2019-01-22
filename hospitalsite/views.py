@@ -34,6 +34,27 @@ def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
     return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
 
+def doctorPanel(request):
+    doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
+    return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor})
+#
+def patientPanel(request):
+    patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
+    return render(request, 'hospitalsite/panelPatient.html', {'patient': patient})
+
+def reseptionPanel(request):
+    reseption = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
+    return render(request, 'hospitalsite/panelReseption.html', {'reseption': reseption})
+
+def accountantPanel(request):
+    accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
+    return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
+
+def managerPanel(request):
+    manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
+    return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
+
+
 def edit(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
     return render(request, 'hospitalsite/edit.html',{'manager':manager})
