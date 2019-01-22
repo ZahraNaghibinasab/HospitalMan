@@ -15,7 +15,6 @@ from .utils import SQLCommand
 
 
 def signIn(request):
-
     return render(request,'hospitalsite/signIn.html')
 
 
@@ -33,9 +32,39 @@ def success(request):
     return HttpResponse("Success!")
 
 
+def enter(request):
+    if request.method == "POST":
+        loginId = request.POST.get("id", "")
+        loginPassword = request.POST.get("password", "")
+
+        if SQLCommand.signInSQL(loginId, loginPassword) > 0:
+            userRole = loginId[0]
+            print(userRole)
+            if userRole == '1':
+                print("hi   ")
+                doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
+                return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor})
+            elif userRole == '2':
+                patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
+                return render(request, 'hospitalsite/panelPatient.html', {'patient': patient})
+            elif userRole == '3':
+                user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
+                return render(request, 'hospitalsite/edit.html', {'user': user})
+            elif userRole == '4':
+                accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
+                return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
+            elif userRole == '5':
+                manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
+                return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
+
+
+
+
+
+
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
-    return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
+    return render(request,'hospitalsite/panelManager.html', {'manager': manager})
 
 def doctorPanel(request):
     doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
