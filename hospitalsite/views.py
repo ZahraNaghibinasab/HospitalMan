@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import User
+from .models import receipt
 from .models import DrugStore
 from .forms import UserForm , UserEditForm
 from django.shortcuts import redirect
@@ -56,7 +57,7 @@ def enter(request):
             elif userRole == '5':
                 manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
                 user = User.objects.raw('SELECT * FROM hospitalsite_user ')
-                return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user})
+                return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user})
 
 
 def verifyUser(request):
@@ -68,8 +69,11 @@ def verifyUser(request):
         SQLCommand.setUserPassword(verifyId, verifyPassword)
         mailPasswordUtils.sendVerificationMail(verifyEmail, verifyPassword)
         return HttpResponse("Success!")
-
     return HttpResponse("failed")
+
+def dragStore(request):
+    drug = DrugStore.objects.raw('SELECT * FROM hospitalsite_drugStore ')
+    return render(request,'hospitalsite/dragStore.html',{'drug':drug})
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
@@ -94,7 +98,13 @@ def reseptionPanel(request):
 
 def accountantPanel(request):
     accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
-    return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
+    user = User.objects.raw('SELECT * FROM hospitalsite_receipt ')
+    return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant , 'user':user})
+
+def managerPanel(request):
+    manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
+    user = User.objects.raw('SELECT * FROM hospitalsite_user ')
+    return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user})
 
 
 def edit(request):
