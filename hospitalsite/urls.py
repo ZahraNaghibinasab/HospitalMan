@@ -7,6 +7,7 @@ urlpatterns = [
     path('signIn/',views.signIn, name='signIn'),
     path('success/',views.success, name='success'),
     path('signIn/enter/', views.enter, name='enter'),
+    path('signIn/enter/verifyUser/', views.verifyUser, name='verifyUser'),
     path('managerPanel/', views.managerPanel, name='managerPanel'),
     path('signIn/enter/edit/', views.edit, name='edit'),
     path('managerPanel/edit/editSuccess/', views.editSuccess, name='editSuccess'),

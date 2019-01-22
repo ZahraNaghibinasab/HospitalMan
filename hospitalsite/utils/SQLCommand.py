@@ -6,6 +6,12 @@ def signInSQL(id,password):
     row=cursor.fetchone()
     return len(row)
 
-def Verified(id):
+
+def VerifyUserSQL(id):
     cursor = connection.cursor()
-    cursor.execute('UPDATE hospitalsite_user SET verified=1 WHERE id= %s' ,str(id))
+    cursor.execute('UPDATE hospitalsite_user SET verified=1 WHERE id= %s', [str(id)])
+
+
+def setUserPassword(id, password):
+    cursor = connection.cursor()
+    cursor.execute('UPDATE hospitalsite_user SET password=%s WHERE id=%s', [str(password), str(id)])

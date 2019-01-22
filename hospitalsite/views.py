@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.db import connection
 from .utils import SQLCommand
+from .utils import mailPasswordUtils
 
 # Create your views here.
 
@@ -41,7 +42,6 @@ def enter(request):
             userRole = loginId[0]
             print(userRole)
             if userRole == '1':
-                print("hi   ")
                 doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
                 return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor})
             elif userRole == '2':
@@ -55,53 +55,67 @@ def enter(request):
                 return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
             elif userRole == '5':
                 manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
-                return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
+                user = User.objects.raw('SELECT * FROM hospitalsite_user ')
+                return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user})
 
 
+def verifyUser(request):
+    if request.method == "POST":
+        verifyId = request.POST.get("id", "")
+        verifyPassword = mailPasswordUtils.createRandomPassword()
+        verifyEmail = request.POST.get("email", "")
+        SQLCommand.VerifyUserSQL(str(verifyId))
+        SQLCommand.setUserPassword(verifyId, verifyPassword)
+        mailPasswordUtils.sendVerificationMail(verifyEmail, verifyPassword)
+        return HttpResponse("Success!")
 
-
-
+    return HttpResponse("failed")
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
-    return render(request,'hospitalsite/panelManager.html', {'manager': manager})
+    user = User.objects.raw('SELECT * FROM hospitalsite_user ')
+    return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user})
+
 
 def doctorPanel(request):
     doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
     return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor})
-#
+
+
 def patientPanel(request):
     patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
     return render(request, 'hospitalsite/panelPatient.html', {'patient': patient})
+
 
 def reseptionPanel(request):
     reseption = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
     return render(request, 'hospitalsite/panelReseption.html', {'reseption': reseption})
 
+
 def accountantPanel(request):
     accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
     return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
-
-def managerPanel(request):
-    manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
-    return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
 
 
 def edit(request):
     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
     return render(request, 'hospitalsite/edit.html',{'user':user})
 
+
 def editDoctor(request):
     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
     return render(request, 'hospitalsite/edit.html',{'user':user})
+
 
 def editPatient(request):
     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
     return render(request, 'hospitalsite/edit.html',{'user':user})
 
+
 def editReseption(request):
     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
     return render(request, 'hospitalsite/edit.html',{'user':user})
+
 
 def editAccountant(request):
     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
