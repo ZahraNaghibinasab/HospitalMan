@@ -5,6 +5,7 @@ urlpatterns = [
     # path('', views.hospital, name='hospital'),
     path('', views.signUp, name='signUp'),
     path('signIn/',views.signIn, name='signIn'),
+    path('dragStore/',views.dragStore, name='dragStore'),
     path('success/',views.success, name='success'),
     path('signIn/enter/', views.enter, name='enter'),
     path('managerPanel/', views.managerPanel, name='managerPanel'),

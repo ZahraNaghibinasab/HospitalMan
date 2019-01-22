@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/panelManager.css' %}">
+    <title>Drag Store</title>
+</head>
+<body>
+<div class="row">
+        <table id="users">
+          <tr>
+            <th>Id-Drug</th>
+            <th>Name</th>
+            <th>Expired-Time</th>
+              {% for d in drug %}
+            <tr>
+            <td>{{d.idDrug}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.expiredDate}}</td>
+            {% endfor %}
+          </tr>
+        </table>
+</div>
+</body>
+</html>

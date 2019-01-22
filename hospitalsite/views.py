@@ -61,8 +61,9 @@ def enter(request):
 
 
 
-
-
+def dragStore(request):
+    drug = DrugStore.objects.raw('SELECT * FROM hospitalsite_drugStore ')
+    return render(request,'hospitalsite/dragStore.html',{'drug':drug})
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
