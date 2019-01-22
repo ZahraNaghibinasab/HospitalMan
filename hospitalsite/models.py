@@ -46,5 +46,7 @@ class DrugStore(models.Model):
     name = models.CharField(max_length=50)
     expiredDate = models.CharField(max_length=11)
 
-
-
+class receipt(models.Model):
+    id = models.CharField(max_length=6, primary_key=True)
+    subject = models.CharField(max_length=15)
+    price = models.IntegerField()

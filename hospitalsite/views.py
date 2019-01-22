@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import User
+from .models import receipt
 from .models import DrugStore
 from .forms import UserForm , UserEditForm
 from django.shortcuts import redirect
@@ -81,7 +82,8 @@ def reseptionPanel(request):
 
 def accountantPanel(request):
     accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
-    return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
+    user = User.objects.raw('SELECT * FROM hospitalsite_receipt ')
+    return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant , 'user':user})
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')

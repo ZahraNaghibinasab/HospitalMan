@@ -27,24 +27,24 @@
         </form>
     </div>
     <div class="column">
-        <table id="users">
+       <table id="users">
           <tr>
-            <th>Name</th>
             <th>Id</th>
-            <th>Telphone-Number</th>
-            <th>E-mail</th>
-            <th>Check</th>
-          <tr>
-            <td>naaame</td>
-            <td>12345</td>
-            <td>741258</td>
-            <td>naaame@gmail.com</td>
-            <td>check button</td>
+            <th>Subject</th>
+            <th>Price</th>
+              <th>Edit</th>
+            {% for n in user %}
+            <tr>
+            <td>{{n.id}}</td>
+            <td>{{n.subject}}</td>
+            <td>{{n.price}}</td>
+           <form action="edit" >
+            <td><input type="submit" value="Edit" id="button2" /></td>
+        </form>
+            {% endfor %}
           </tr>
         </table>
-         <form action="edit" >
-            <input type="submit" value="Verify This Users" id="button2" />
-        </form>
+
     </div>
 </div>
 </body>
