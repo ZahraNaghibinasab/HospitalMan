@@ -8,7 +8,7 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     tel = models.CharField(max_length=15, blank=True, null=True)
     verified = models.BooleanField(default=False)
-    password = models.CharField(max_length=20)
+    password = models.CharField(max_length=20, blank=True, null=True)
     role = models.IntegerField(blank=True, null=True)
     # 1 for doctor
     # 2 for patient
