@@ -5,6 +5,7 @@ from .forms import UserForm , UserEditForm
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.db import connection
+from .utils import SQLCommand
 
 # Create your views here.
 
@@ -14,6 +15,7 @@ from django.db import connection
 
 
 def signIn(request):
+
     return render(request,'hospitalsite/signIn.html')
 
 
