@@ -55,7 +55,8 @@ def enter(request):
                 return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
             elif userRole == '5':
                 manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
-                return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
+                user = User.objects.raw('SELECT * FROM hospitalsite_user ')
+                return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user})
 
 
 
@@ -84,7 +85,8 @@ def accountantPanel(request):
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
-    return render(request, 'hospitalsite/panelManager.html', {'manager': manager})
+    user = User.objects.raw('SELECT * FROM hospitalsite_user ')
+    return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user})
 
 
 def edit(request):

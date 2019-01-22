@@ -34,12 +34,14 @@
             <th>Telphone-Number</th>
             <th>E-mail</th>
             <th>Check</th>
-          <tr>
-            <td>naaame</td>
-            <td>12345</td>
-            <td>741258</td>
-            <td>naaame@gmail.com</td>
-            <td>check button</td>
+            {% for n in user %}
+            <tr>
+            <td>{{n.name}}</td>
+            <td>{{n.id}}</td>
+            <td>{{n.tel}}</td>
+            <td>{{n.Email}}</td>
+            <td> <input type="checkbox" name="vehicle1" value="Bike">{{n.verified}} <br></td>
+            {% endfor %}
           </tr>
         </table>
          <form action="edit" >
