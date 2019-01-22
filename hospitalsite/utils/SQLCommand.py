@@ -15,3 +15,13 @@ def VerifyUserSQL(id):
 def setUserPassword(id, password):
     cursor = connection.cursor()
     cursor.execute('UPDATE hospitalsite_user SET password=%s WHERE id=%s', [str(password), str(id)])
+
+
+def Reservation(idD,Date,idP):
+    cursor = connection.cursor()
+    cursor.execute('INSERT INTO hospitalsite_reservation (idD_id ,time , idP_id) \
+                    SELECT %s,%s ,%s \
+                    FROM hospitalsite_reservation WHERE \
+                    NOT EXISTS (SELECT * FROM hospitalsite_reservation \
+                    WHERE idD_id= %s AND time= %s AND idP_id = %s)',
+                    [str(idD),str(Date),str(idP),str(idD),str(Date),str(idP)])
