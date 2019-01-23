@@ -53,6 +53,27 @@
         </table>
 
     </div>
+        <div class="column">
+        <table id="users">
+          <tr>
+            <th>Id</th>
+            <th>Action-Time</th>
+            <th>Id of object</th>
+            <th>Action-flag</th>
+            <th>Change-message</th>
+            {% for l in log %}
+            <tr>
+                <td>{{l.id}}</td>
+                <td> {{l.action_time}}</td>
+                <td>{{l.object_repr}}</td>
+                <td>{{l.action_flag}}</td>
+                <td> {{l.change_message}} </td>
+            </form>
+            {% endfor %}
+          </tr>
+        </table>
+
+    </div>
 </div>
 </body>
 </html>

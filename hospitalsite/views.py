@@ -16,7 +16,13 @@ from .utils import mailPasswordUtils
 # def hospital(request):
 #     drugs = DrugStore.objects.filter(expiredDate='1398')
 #     return render(request, 'hospitalsite/signUp.html', {'drugs': drugs})
-
+def dictfetchall(cursor):
+    "Return all rows from a cursor as a dict"
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
 
 def signIn(request):
 
@@ -79,7 +85,10 @@ def enter(request):
             elif userRole == '5':
                 manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 user = User.objects.raw('SELECT * FROM hospitalsite_user ')
-                return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user})
+                cursor = connection.cursor()
+                cursor.execute('SELECT * FROM django_admin_logHide')
+                log = cursor.fetchall()
+                return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user , 'log':log})
         else:
             return HttpResponse("You are not registered!")
 
@@ -129,8 +138,10 @@ def accountantPanel(request):
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
     user = User.objects.raw('SELECT * FROM hospitalsite_user ')
-    return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user})
-
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM django_admin_log')
+    log = dictfetchall(cursor)
+    return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user, 'log': log})
 
 def edit(request):
     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
