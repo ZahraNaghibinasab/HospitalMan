@@ -2,12 +2,14 @@ from django.shortcuts import render
 from .models import User
 from .models import receipt
 from .models import DrugStore
+from .models import Reservation
 from .forms import UserForm , UserEditForm
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.db import connection
 from .utils import SQLCommand
 from .utils import mailPasswordUtils
+
 
 # Create your views here.
 
@@ -32,6 +34,24 @@ def success(request):
             cursor = connection.cursor()
             cursor.execute('INSERT INTO hospitalsite_user (name , id , tel , Email) VALUES (%s , %s , %s , %s) ', [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
                            )
+            userid = request.POST.get("id", "")
+            userRole = userid[0]
+            print(userid)
+            cursor.execute('UPDATE hospitalsite_user SET role = %s WHERE id = %s', [userRole, userid])
+
+            if userRole == '1':
+                cursor.execute('INSERT into hospitalsite_doctor (idD_id) VALUES (%s)', [userid])
+            elif userRole == '2':
+                cursor.execute('INSERT into hospitalsite_patient (idP_id) VALUES (%s)', [userid])
+            elif userRole == '3':
+                cursor.execute('INSERT into hospitalsite_reception (idR_id) VALUES (%s)', [userid])
+            elif userRole == '4':
+                cursor.execute('INSERT into hospitalsite_accountant (idA_id) VALUES (%s)', [userid])
+            elif userRole == '5':
+                cursor.execute('INSERT into hospitalsite_manager (idM_id) VALUES (%s)', [userid])
+
+
+
     return HttpResponse("Success!")
 
 
@@ -44,19 +64,19 @@ def enter(request):
             userRole = loginId[0]
             print(userRole)
             if userRole == '1':
-                doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
+                doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor})
             elif userRole == '2':
-                patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
+                patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 return render(request, 'hospitalsite/panelPatient.html', {'patient': patient})
             elif userRole == '3':
-                user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
+                user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 return render(request, 'hospitalsite/edit.html', {'user': user})
             elif userRole == '4':
-                accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
+                accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
             elif userRole == '5':
-                manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
+                manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 user = User.objects.raw('SELECT * FROM hospitalsite_user ')
                 return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user})
 
@@ -94,7 +114,9 @@ def patientPanel(request):
 
 def reseptionPanel(request):
     reseption = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
-    return render(request, 'hospitalsite/panelReseption.html', {'reseption': reseption})
+    idp = Reservation.objects.raw('SELECT idP_id FROM hospitalsite_reservation where ')
+    reserve = Reservation.objects.raw('SELECT * FROM hospitalsite_reservation')
+    return render(request, 'hospitalsite/panelReseption.html', {'reseption': reseption , 'reserve': reserve})
 
 
 def accountantPanel(request):

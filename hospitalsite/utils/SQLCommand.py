@@ -25,3 +25,5 @@ def Reservation(idD,Date,idP):
                     NOT EXISTS (SELECT * FROM hospitalsite_reservation \
                     WHERE idD_id= %s AND time= %s AND idP_id = %s)',
                     [str(idD),str(Date),str(idP),str(idD),str(Date),str(idP)])
+
+

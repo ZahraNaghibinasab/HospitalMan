@@ -35,14 +35,16 @@
             <th>Patient Name</th>
             <th>Patient Id</th>
             <th>Check it</th>
+             {% for r in reserve %}
           <tr>
-            <td>DoctorB</td>
-            <td>12345</td>
-            <td>Time</td>
-            <td>PatientA</td>
-            <td>32588</td>
-            <td>true</td>
+            <td>{{r.nameD}}</td>
+            <td>{{r.idD}}</td>
+            <td>{{r.time}}</td>
+            <td>{{r.nameP}}</td>
+            <td>{{r.idP}}</td>
+            <td>{{r.checked}}</td>
           </tr>
+            {% endfor %}
         </table>
          <form action="edit" >
             <input type="submit" value="Verify This Users" id="button2" />
