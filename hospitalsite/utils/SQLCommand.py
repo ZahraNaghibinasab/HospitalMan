@@ -34,3 +34,11 @@ def DoctorAccept(id):
     cursor = connection.cursor()
     cursor.execute('UPDATE hospitalsite_reservation SET checked= 1 WHERE idP_id = %s', str(id))
 
+def PatientRsvTable():
+    cursor = connection.cursor()
+    cursor.execute('SELECT time, idD_id FROM hospitalsite_reservation WHERE checked =0')
+    row = cursor.fetchall()
+    return row
+
+
+

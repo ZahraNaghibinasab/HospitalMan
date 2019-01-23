@@ -18,7 +18,7 @@ from .utils import mailPasswordUtils
 
 def signIn(request):
 
-
+    print(SQLCommand.PatientRsvTable())
     return render(request,'hospitalsite/signIn.html')
 
 
