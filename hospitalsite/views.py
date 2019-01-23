@@ -181,3 +181,18 @@ def editSuccess(request):
             str(form.cleaned_data['postalCode'])])
 
     return HttpResponse("Success!")
+
+
+def forgotPassword(request):
+    return render(request, 'hospitalsite/forgotPassword.html')
+
+
+def sendPassword(request):
+    if request.method == "POST":
+        userEmail = request.POST.get("email", "")
+        userPassword = SQLCommand.getUserPassword(userEmail)
+        mailPasswordUtils.sendForgottenPassword(userEmail, userPassword)
+        return HttpResponse("Success!")
+
+    else:
+        return HttpResponse("Failed!")

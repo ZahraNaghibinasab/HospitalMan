@@ -19,6 +19,13 @@ def setUserPassword(id, password):
     cursor.execute('UPDATE hospitalsite_user SET password=%s WHERE id=%s', [str(password), str(id)])
 
 
+def getUserPassword(email):
+    cursor = connection.cursor()
+    cursor.execute('SELECT password FROM hospitalsite_user WHERE Email = %s', [str(email)])
+    userPassword = cursor.fetchone()[0]
+    return userPassword
+
+
 def Reservation(idD,Date,idP):
     cursor = connection.cursor()
     cursor.execute('INSERT INTO hospitalsite_reservation (idD_id ,time , idP_id) \
