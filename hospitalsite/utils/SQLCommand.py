@@ -25,3 +25,12 @@ def Reservation(idD,Date,idP):
                     NOT EXISTS (SELECT * FROM hospitalsite_reservation \
                     WHERE idD_id= %s AND time= %s AND idP_id = %s)',
                     [str(idD),str(Date),str(idP),str(idD),str(Date),str(idP)])
+
+def DoctorCancel(id):
+    cursor = connection.cursor()
+    cursor.execute('UPDATE hospitalsite_reservation SET checked= 2 WHERE idP_id = %s',str(id))
+
+def DoctorAccept(id):
+    cursor = connection.cursor()
+    cursor.execute('UPDATE hospitalsite_reservation SET checked= 1 WHERE idP_id = %s', str(id))
+
