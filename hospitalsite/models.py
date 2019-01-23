@@ -58,6 +58,7 @@ class Reservation(models.Model):
     idP = models.ForeignKey(Patient, on_delete=models.CASCADE, blank=True, null=True)
     checked = models.BooleanField(default=False)
 
-
-
+class Prescription(models.Model):
+    idPatient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    idDrug = models.ForeignKey(DrugStore, on_delete=models.CASCADE)
 

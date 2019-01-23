@@ -1,5 +1,13 @@
 from django.db import connection
 
+def dictfetchall(cursor):
+    "Return all rows from a cursor as a dict"
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
+
 def signInSQL(id,password):
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM hospitalsite_user WHERE id= %s and password= %s and verified=1',[id,password])
@@ -28,6 +36,8 @@ def Reservation(idD,Date,idP):
                     WHERE idD_id= %s AND time= %s AND idP_id = %s)',
                     [str(idD),str(Date),str(idP),str(idD),str(Date),str(idP)])
 
+
+
 def DoctorCancel(id):
     cursor = connection.cursor()
     cursor.execute('UPDATE hospitalsite_reservation SET checked= 2 WHERE idP_id = %s',str(id))
@@ -42,5 +52,31 @@ def PatientRsvTable():
     row = cursor.fetchall()
     return row
 
+
+def getPatientID(idP):
+    cursor = connection.cursor()
+    cursor.execute('SELECT id FROM hospitalsite_patient WHERE idP_id = %s', [str(idP)])
+    id = cursor.fetchone()[0]
+    return id
+
+def getDrugId(idP):
+    cursor = connection.cursor()
+    cursor.execute('SELECT idDrug_id FROM hospitalsite_Prescription WHERE idPatient_id = % s', [idP])
+    id = cursor.fetchone()[0]
+    return id
+
+def getDrugName(id):
+    cursor = connection.cursor()
+    cursor.execute('SELECT name FROM hospitalsite_drugStore WHERE idDrug = %s', [str(id)])
+    name = cursor.fetchone()[0]
+    return name
+
+def getPatientDrugNames(idP):
+    cursor = connection.cursor()
+    cursor.execute('SELECT name FROM hospitalsite_drugStore, hospitalsite_Prescription WHERE '
+                   'hospitalsite_drugStore.idDrug = hospitalsite_Prescription.idDrug_id and '
+                   'hospitalsite_Prescription.idPatient_id =%s',[idP])
+    name = dictfetchall(cursor)
+    return name
 
 

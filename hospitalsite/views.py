@@ -3,6 +3,7 @@ from .models import User
 from .models import receipt
 from .models import DrugStore
 from .models import Reservation
+from .models import Prescription
 from .forms import UserForm , UserEditForm
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -26,7 +27,6 @@ def dictfetchall(cursor):
 
 def signIn(request):
 
-    print(SQLCommand.PatientRsvTable())
     return render(request,'hospitalsite/signIn.html')
 
 
@@ -75,7 +75,10 @@ def enter(request):
                 return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor})
             elif userRole == '2':
                 patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
-                return render(request, 'hospitalsite/panelPatient.html', {'patient': patient})
+                idP = SQLCommand.getPatientID(loginId)
+                drug = SQLCommand.getPatientDrugNames(idP)
+                print (drug)
+                return render(request, 'hospitalsite/panelPatient.html', {'patient': patient, 'drug':drug})
             elif userRole == '3':
                 user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 return render(request, 'hospitalsite/edit.html', {'user': user})
@@ -155,7 +158,7 @@ def editDoctor(request):
 
 def editPatient(request):
     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
-    return render(request, 'hospitalsite/edit.html',{'user':user})
+    return render(request, 'hospitalsite/edit.html',{'user':user })
 
 
 def editReseption(request):

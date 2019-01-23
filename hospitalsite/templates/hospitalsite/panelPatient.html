@@ -53,10 +53,10 @@
           <table id="factor">
           <tr>
              <th>Drug</th>
-            <th>Time</th>
+              {% for d in drug %}
           <tr>
-            <td>jelofen</td>
-            <td>2 times</td>
+            <td>{{d.name}}</td>
+              {% endfor %}
           </tr>
           </table>
     </div>
