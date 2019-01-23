@@ -28,4 +28,19 @@ def Reservation(idD,Date,idP):
                     WHERE idD_id= %s AND time= %s AND idP_id = %s)',
                     [str(idD),str(Date),str(idP),str(idD),str(Date),str(idP)])
 
+def DoctorCancel(id):
+    cursor = connection.cursor()
+    cursor.execute('UPDATE hospitalsite_reservation SET checked= 2 WHERE idP_id = %s',str(id))
+
+def DoctorAccept(id):
+    cursor = connection.cursor()
+    cursor.execute('UPDATE hospitalsite_reservation SET checked= 1 WHERE idP_id = %s', str(id))
+
+def PatientRsvTable():
+    cursor = connection.cursor()
+    cursor.execute('SELECT time, idD_id FROM hospitalsite_reservation WHERE checked =0')
+    row = cursor.fetchall()
+    return row
+
+
 

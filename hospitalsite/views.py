@@ -19,7 +19,8 @@ from .utils import mailPasswordUtils
 
 
 def signIn(request):
-    #SQLCommand.Reservation('2','2019-03-01 00:00:00.000000','6')
+
+    print(SQLCommand.PatientRsvTable())
     return render(request,'hospitalsite/signIn.html')
 
 
