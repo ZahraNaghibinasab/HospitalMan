@@ -79,7 +79,8 @@ def enter(request):
                 manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 user = User.objects.raw('SELECT * FROM hospitalsite_user ')
                 return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user})
-
+        else:
+            return HttpResponse("You are not registered!")
 
 def verifyUser(request):
     if request.method == "POST":

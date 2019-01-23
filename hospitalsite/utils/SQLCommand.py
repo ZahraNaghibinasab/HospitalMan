@@ -4,6 +4,8 @@ def signInSQL(id,password):
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM hospitalsite_user WHERE id= %s and password= %s and verified=1',[id,password])
     row=cursor.fetchone()
+    if row is None:
+        row = ""
     return len(row)
 
 
