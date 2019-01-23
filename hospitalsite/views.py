@@ -195,3 +195,11 @@ def editSuccess(request):
             str(form.cleaned_data['postalCode'])])
 
     return HttpResponse("Success!")
+
+def filter(request):
+    if request.method == "POST":
+        drugDate = request.POST.get("expiredDate", "")
+        print("drugdate: " + str(drugDate))
+        drugNameID = SQLCommand.filterDrugs(drugDate)
+        print(drugNameID)
+        return render(request, 'hospitalsite/filter.html',{'drugNameID':drugNameID})

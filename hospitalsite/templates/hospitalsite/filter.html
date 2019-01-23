@@ -12,20 +12,13 @@
           <tr>
             <th>Id-Drug</th>
             <th>Name</th>
-            <th>Expired-Time</th>
-              {% for d in drug %}
+              {% for d in drugNameID %}
             <tr>
             <td>{{d.idDrug}}</td>
             <td>{{d.name}}</td>
-            <td>{{d.expiredDate}}</td>
             {% endfor %}
           </tr>
         </table>
-        <form action="filter/" method="post">
-				{% csrf_token %}
-                <input type="text" placeholder="insert time" name="expiredDate"><br>
-				<input type="submit" value="Filter" id="button"><br>
-        </form>
-</div>
+      </div>
 </body>
 </html>

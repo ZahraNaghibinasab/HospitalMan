@@ -80,3 +80,10 @@ def getPatientDrugNames(idP):
     return name
 
 
+def filterDrugs(time):
+    cursor = connection.cursor()
+    cursor.execute('SELECT idDrug,name FROM hospitalsite_drugstore WHERE '
+                   'hospitalsite_drugStore.expiredDate = %s', [time])
+    name = dictfetchall(cursor)
+    return name
+
