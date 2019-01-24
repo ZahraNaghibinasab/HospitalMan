@@ -72,14 +72,15 @@ def enter(request):
             userRole = loginId[0]
             print(userRole)
             if userRole == '1':
+                doctorTable = SQLCommand.DoctorRsvTable(signInUserID)
                 doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
-                return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor})
+                return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor , 'doctorTable':doctorTable})
             elif userRole == '2':
                 patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 idP = SQLCommand.getPatientID(loginId)
                 drug = SQLCommand.getPatientDrugNames(idP)
-                print (drug)
-                return render(request, 'hospitalsite/panelPatient.html', {'patient': patient, 'drug':drug})
+                reserve = SQLCommand.PatientRsvTable()
+                return render(request, 'hospitalsite/panelPatient.html', {'patient': patient, 'drug':drug,'reserve': reserve})
             elif userRole == '3':
                 user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 return render(request, 'hospitalsite/edit.html', {'user': user})
@@ -257,4 +258,5 @@ def sendPassword(request):
 
     else:
         return HttpResponse("Failed!")
+
 

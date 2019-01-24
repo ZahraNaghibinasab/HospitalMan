@@ -33,17 +33,15 @@
             <th>Time</th>
             <th>Check it</th>
           <tr>
-            <td>DoctorB</td>
-            <td>Time</td>
-            <td><input type="radio"/></td>
-
+            {% for r in reserve %}
             <tr>
-            <td>DoctorB</td>
-            <td>Time</td>
+            <td>{{r.name}}</td>
+            <td>{{r.time}}</td>
             <form action="action">
             <td><input type="radio" id="contactChoice" name="contact" value="mail"></td>
             </form>
           </tr>
+            {% endfor %}
         </table>
          <form action="edit" >
             <input type="submit" value="Reserve" id="button2" />

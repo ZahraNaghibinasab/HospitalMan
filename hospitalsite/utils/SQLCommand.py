@@ -73,10 +73,23 @@ def DoctorAccept(id):
 
 def PatientRsvTable():
     cursor = connection.cursor()
-    cursor.execute('SELECT time, idD_id FROM hospitalsite_reservation WHERE checked =0')
-    row = cursor.fetchall()
+    cursor.execute('SELECT time, name FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_doctor WHERE '
+                    '(hospitalsite_doctor.id = hospitalsite_reservation.idD_id) and '
+                    '(hospitalsite_doctor.idD_id = hospitalsite_user.id) and'
+                    '(checked = 0)')
+    row = dictfetchall(cursor)
     return row
 
+def DoctorRsvTable(idD):
+    cursor = connection.cursor()
+    cursor.execute('SELECT time, name ,checked  FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_patient,hospitalsite_doctor WHERE '
+                    '(hospitalsite_patient.id = hospitalsite_reservation.idP_id) and '
+                    '(hospitalsite_patient.idP_id = hospitalsite_user.id) and '
+                    '(checked != 2 ) and'
+                   '(hospitalsite_doctor.idD_id = %s) and '
+                   '(hospitalsite_doctor.id = hospitalsite_reservation.idD_id) ', [str(idD)])
+    row = dictfetchall(cursor)
+    return row
 
 def getPatientID(idP):
     cursor = connection.cursor()
