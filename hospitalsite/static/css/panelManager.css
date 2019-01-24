@@ -50,7 +50,7 @@ h2{
 }
 
 #button2{
-	width: 200px;
+	width: 100px;
 	height: 35px;
 	background:  	#32CD32;
 	border: 1px solid 	#32CD32;
@@ -62,7 +62,21 @@ h2{
 	font-weight: 400;
 	padding: 6px;
 	margin-top: 10px;
+}
 
+#deleteButton{
+	width: 100px;
+	height: 35px;
+	background:  	#32CD32;
+	border: 1px solid 	#32CD32;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
 }
 
 #button2:hover{

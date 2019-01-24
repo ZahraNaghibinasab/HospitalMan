@@ -85,13 +85,22 @@ def enter(request):
 
 def verifyUser(request):
     if request.method == "POST":
-        verifyId = request.POST.get("id", "")
-        verifyPassword = mailPasswordUtils.createRandomPassword()
-        verifyEmail = request.POST.get("email", "")
-        SQLCommand.VerifyUserSQL(str(verifyId))
-        SQLCommand.setUserPassword(verifyId, verifyPassword)
-        mailPasswordUtils.sendVerificationMail(verifyEmail, verifyPassword)
-        return HttpResponse("Success!")
+        # Verify button is clicked
+        print("button: " + request.POST.get("button", ""))
+        if request.POST.get("button", "") == "Verify":
+            verifyId = request.POST.get("id", "")
+            verifyPassword = mailPasswordUtils.createRandomPassword()
+            verifyEmail = request.POST.get("email", "")
+            SQLCommand.VerifyUserSQL(str(verifyId))
+            SQLCommand.setUserPassword(verifyId, verifyPassword)
+            mailPasswordUtils.sendVerificationMail(verifyEmail, verifyPassword)
+            return HttpResponse("User Verified!")
+        # Delete button is clicked
+        elif request.POST.get("button", "") == "Delete":
+            deleteId = request.POST.get("id", "")
+            SQLCommand.deleteUserSQL(deleteId)
+            return HttpResponse("User Deleted!")
+
     return HttpResponse("failed")
 
 def dragStore(request):

@@ -19,6 +19,24 @@ def setUserPassword(id, password):
     cursor.execute('UPDATE hospitalsite_user SET password=%s WHERE id=%s', [str(password), str(id)])
 
 
+def deleteUserSQL(id):
+    cursor = connection.cursor()
+    userRole = id[0]
+
+    if userRole == '1':
+        cursor.execute('DELETE from hospitalsite_doctor WHERE idD_id = %s ', [id])
+    elif userRole == '2':
+        cursor.execute('DELETE from hospitalsite_patient WHERE idP_id = %s ', [id])
+    elif userRole == '3':
+        cursor.execute('DELETE from hospitalsite_reception WHERE idR_id = %s ', [id])
+    elif userRole == '4':
+        cursor.execute('DELETE from hospitalsite_accountant WHERE idA_id = %s ', [id])
+    elif userRole == '5':
+        cursor.execute('DELETE from hospitalsite_manager WHERE idM_id = %s ', [id])
+
+    cursor.execute('DELETE from hospitalsite_user WHERE id = %s ', [id])
+
+
 def getUserPassword(email):
     cursor = connection.cursor()
     cursor.execute('SELECT password FROM hospitalsite_user WHERE Email = %s', [str(email)])
