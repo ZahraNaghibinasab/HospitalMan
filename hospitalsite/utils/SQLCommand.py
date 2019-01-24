@@ -59,6 +59,12 @@ def getPatientID(idP):
     id = cursor.fetchone()[0]
     return id
 
+def getDoctorID(idD):
+    cursor = connection.cursor()
+    cursor.execute('SELECT id FROM hospitalsite_doctor WHERE idD_id = %s', [str(idD)])
+    id = cursor.fetchone()[0]
+    return id
+
 def getDrugId(idP):
     cursor = connection.cursor()
     cursor.execute('SELECT idDrug_id FROM hospitalsite_Prescription WHERE idPatient_id = % s', [idP])
@@ -86,4 +92,9 @@ def filterDrugs(time):
                    'hospitalsite_drugStore.expiredDate = %s', [time])
     name = dictfetchall(cursor)
     return name
+
+def insertMessage(patientId,doctorId,subject,message):
+    cursor = connection.cursor()
+    cursor.execute('INSERT INTO hospitalsite_message (idDoctor_id,idPatient_id,subject,text) VALUES (%s,%s,%s,%s)',[patientId,doctorId,subject,message])
+
 

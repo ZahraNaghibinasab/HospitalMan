@@ -73,7 +73,29 @@ h2{
 	opacity: 0.6;
 }
 
+#button3{
+	width: 200px;
+	height: 35px;
+	background:  	#FFA500;
+	border: 1px solid 	#FFA500;
+	cursor: pointer;
+	border-radius: 2px;
+	color: black;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
 
+}
+
+#button3:hover{
+	opacity: 0.8;
+}
+
+#button3:active{
+	opacity: 0.6;
+}
 .column {
   background: "1.jpg";
   float: left;

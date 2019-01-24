@@ -203,3 +203,19 @@ def filter(request):
         drugNameID = SQLCommand.filterDrugs(drugDate)
         print(drugNameID)
         return render(request, 'hospitalsite/filter.html',{'drugNameID':drugNameID})
+
+def sendMessage(request):
+    return render(request, 'hospitalsite/sendMessage.html')
+
+def send(request):
+    if request.method == "POST":
+        pId = request.POST.get("patientId", "")
+        dId = request.POST.get("doctorId", "")
+        subject = request.POST.get("subject", "")
+        message = request.POST.get("message", "")
+        patientId = SQLCommand.getPatientID(pId)
+        doctorId = SQLCommand.getDoctorID(dId)
+        SQLCommand.insertMessage(patientId, doctorId, subject, message)
+        return HttpResponse("Your message has been sent. please sign in again!")
+    else:
+        return HttpResponse("Failed!")

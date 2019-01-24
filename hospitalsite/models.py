@@ -62,3 +62,8 @@ class Prescription(models.Model):
     idPatient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     idDrug = models.ForeignKey(DrugStore, on_delete=models.CASCADE)
 
+class message(models.Model):
+    idPatient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    idDoctor  = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=30)
+    text = models.TextField()

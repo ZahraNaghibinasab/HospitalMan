@@ -5,6 +5,7 @@ from .models import User
 from .models import DrugStore
 
 
+
 class UserForm(forms.ModelForm):
 
     class Meta:
