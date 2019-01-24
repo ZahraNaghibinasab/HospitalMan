@@ -11,7 +11,7 @@ urlpatterns = [
     path('signIn/enter/', views.enter, name='enter'),
     path('signIn/enter/sendMessage/', views.sendMessage, name='sendMessage'),
     path('signIn/enter/sendMessage/send/', views.send, name='send'),
-
+    path('signIn/enter/showMessage/', views.showMessage, name='showMessage'),
     path('signIn/enter/verifyUser/', views.verifyUser, name='verifyUser'),
     path('managerPanel/', views.managerPanel, name='managerPanel'),
     path('signIn/enter/edit/', views.edit, name='edit'),

@@ -97,4 +97,14 @@ def insertMessage(patientId,doctorId,subject,message):
     cursor = connection.cursor()
     cursor.execute('INSERT INTO hospitalsite_message (idDoctor_id,idPatient_id,subject,text) VALUES (%s,%s,%s,%s)',[patientId,doctorId,subject,message])
 
+def reverseDoctorId(idDoctor):
+    cursor = connection.cursor()
+    cursor.execute('SELECT id FROM hospitalsite_doctor WHERE idD_id = %s', [str(idDoctor)])
+    id = cursor.fetchone()[0]
+    return id
 
+def getDoctorMessage(idD):
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM hospitalsite_message WHERE idDoctor_id = %s', [idD])
+    messages = dictfetchall(cursor)
+    return messages

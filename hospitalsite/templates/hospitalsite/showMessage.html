@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+h1 {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  background-color: white;
+  color: black;
+  font-size:16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+      {% for m in messages %}
+    <label >patient ID</label>
+    <h1>{{m.idPatient_id}}</h1>
+    <label >Doctor ID</label>
+    <h1>{{m.idDoctor_id}}</h1>
+     <label >Subject</label>
+    <h1>{{m.subject}}</h1>
+    <label >Message</label>
+    <h1>{{m.message}}</h1>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

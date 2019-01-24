@@ -11,6 +11,7 @@ from django.db import connection
 from .utils import SQLCommand
 from .utils import mailPasswordUtils
 
+signInUserID =""
 
 # Create your views here.
 
@@ -66,7 +67,8 @@ def enter(request):
     if request.method == "POST":
         loginId = request.POST.get("id", "")
         loginPassword = request.POST.get("password", "")
-
+        global signInUserID
+        signInUserID = loginId
         if SQLCommand.signInSQL(loginId, loginPassword) > 0:
             userRole = loginId[0]
             print(userRole)
@@ -219,3 +221,13 @@ def send(request):
         return HttpResponse("Your message has been sent. please sign in again!")
     else:
         return HttpResponse("Failed!")
+
+def showMessage(request):
+    print ("this:")
+    print (signInUserID)
+    idD =SQLCommand.reverseDoctorId(signInUserID)
+    print ("idD")
+    print(idD)
+    messages = SQLCommand.getDoctorMessage(idD)
+    return render(request, 'hospitalsite/showMessage.html',{'messages':messages})
+
