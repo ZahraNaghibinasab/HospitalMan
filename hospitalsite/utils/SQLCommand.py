@@ -103,8 +103,21 @@ def reverseDoctorId(idDoctor):
     id = cursor.fetchone()[0]
     return id
 
+def reversePatientId(idPatient):
+    cursor = connection.cursor()
+    cursor.execute('SELECT id FROM hospitalsite_patient WHERE idP_id = %s', [str(idPatient)])
+    id = cursor.fetchone()[0]
+    return id
+
 def getDoctorMessage(idD):
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM hospitalsite_message WHERE idDoctor_id = %s', [idD])
     messages = dictfetchall(cursor)
     return messages
+
+def getPatientMessage(idP):
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM hospitalsite_message WHERE idPatient_id = %s', [idP])
+    messages = dictfetchall(cursor)
+    return messages
+

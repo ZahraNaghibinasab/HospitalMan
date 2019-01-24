@@ -91,7 +91,7 @@ def enter(request):
                 manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 user = User.objects.raw('SELECT * FROM hospitalsite_user ')
                 cursor = connection.cursor()
-                cursor.execute('SELECT * FROM django_admin_logHide')
+                cursor.execute('SELECT * FROM django_admin_log')
                 log = cursor.fetchall()
                 return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user , 'log':log})
         else:
@@ -225,9 +225,18 @@ def send(request):
 def showMessage(request):
     print ("this:")
     print (signInUserID)
-    idD =SQLCommand.reverseDoctorId(signInUserID)
-    print ("idD")
-    print(idD)
-    messages = SQLCommand.getDoctorMessage(idD)
+    role = signInUserID[0]
+    if role =='1' :
+        idD =SQLCommand.reverseDoctorId(signInUserID)
+        print ("idD")
+        print(idD)
+        messages = SQLCommand.getDoctorMessage(idD)
+    elif role == '2':
+        idP = SQLCommand.reversePatientId(signInUserID)
+        print ("idD")
+        messages = SQLCommand.getPatientMessage(idP)
     return render(request, 'hospitalsite/showMessage.html',{'messages':messages})
+
+
+
 
