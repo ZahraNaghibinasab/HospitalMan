@@ -92,7 +92,7 @@ def enter(request):
                 user = User.objects.raw('SELECT * FROM hospitalsite_user ')
                 cursor = connection.cursor()
                 cursor.execute('SELECT * FROM django_admin_log')
-                log = cursor.fetchall()
+                log = dictfetchall(cursor)
                 return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user , 'log':log})
         else:
             return HttpResponse("You are not registered!")
