@@ -12,44 +12,46 @@
         <h1>Identities</h1>
         <p>
             {% for m in manager %}
-            <h3>NAME:</h3>
-           <h2>{{m.name}}</h2>
-            <h3>ID:</h3>
-            <h2>{{m.id}}</h2>
-            <h3>E-MAIL:</h3>
-            <h2>{{m.Email}}</h2>
-            <h3>TEL-NUMBER:</h3>
-            <h2>{{m.tel}}</h2>
-            {% endfor %}
+        <h3>NAME:</h3>
+        <h2>{{m.name}}</h2>
+        <h3>ID:</h3>
+        <h2>{{m.id}}</h2>
+        <h3>E-MAIL:</h3>
+        <h2>{{m.Email}}</h2>
+        <h3>TEL-NUMBER:</h3>
+        <h2>{{m.tel}}</h2>
+        {% endfor %}
         </p>
-        <form action="edit/" >
-            <input type="submit" value="Edit Profile" id="button" />
+        <form action="edit/">
+            <input type="submit" value="Edit Profile" id="button"/>
         </form>
     </div>
     <div class="column">
         <table id="users">
-          <tr>
-            <th>Name</th>
-            <th>Id</th>
-            <th>Telphone-Number</th>
-            <th>E-mail</th>
-            <th>Check</th>
-              <th>Button</th>
-            {% for n in user %}
             <tr>
-            <form id=verifyForm action="verifyUser/" method="post">
-                {% csrf_token %}
-                <td>{{n.name}}</td>
-                <td> {{n.id}}</td>
-                <td>{{n.tel}}</td>
-                <td>{{n.Email}}</td>
-                <td> {{n.verified}} </td>
-                <input type="hidden" name="id", value="{{n.id}}">
-                <input type="hidden" name="email", value="{{n.Email}}">
-                <td>  <input type="submit" value="Verify This User" id="button2" /></td>
-            </form>
-            {% endfor %}
-          </tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Telphone-Number</th>
+                <th>E-mail</th>
+                <th>Check</th>
+                <th>Verify User</th>
+                <th>Delete User</th>
+                {% for n in user %}
+            <tr>
+                <form id=verifyForm action="verifyUser/" method="post">
+                    {% csrf_token %}
+                    <td>{{n.name}}</td>
+                    <td> {{n.id}}</td>
+                    <td>{{n.tel}}</td>
+                    <td>{{n.Email}}</td>
+                    <td> {{n.verified}}</td>
+                    <input type="hidden" name="id" , value="{{n.id}}">
+                    <input type="hidden" name="email" , value="{{n.Email}}">
+                    <td><input type="submit" value="Verify" name="button" id="button2"/></td>
+                    <td><input type="submit" value="Delete" name="button" id="deleteButton"/></td>
+                </form>
+                {% endfor %}
+            </tr>
         </table>
 
     </div>

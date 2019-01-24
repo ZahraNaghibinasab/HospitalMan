@@ -10,6 +10,14 @@ def sendVerificationMail(targetEmailAddress, password):
     send_mail(subject, messageBody, 'hospitalman.DB@gmail.com', [targetEmailAddress, ])
 
 
+def sendForgottenPassword(targetEmailAddress, password):
+    subject = "فراموشی پسورد سایت هاسپیتال‌من"
+    messageBody = "این ایمیل برای درخواست شما جهت بازیابی پسورد اکانت کاربری شما در سایت هاسپیتال‌من ارسال شده است. " \
+                  "\n پسورد شما: " + str(password)
+
+    send_mail(subject, messageBody, 'hospitalman.DB@gmail.com', [targetEmailAddress, ])
+
+
 def createRandomPassword():
     N = 8
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))

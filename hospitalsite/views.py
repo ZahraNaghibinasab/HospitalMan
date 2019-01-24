@@ -27,7 +27,6 @@ def dictfetchall(cursor):
     ]
 
 def signIn(request):
-
     return render(request,'hospitalsite/signIn.html')
 
 
@@ -99,13 +98,22 @@ def enter(request):
 
 def verifyUser(request):
     if request.method == "POST":
-        verifyId = request.POST.get("id", "")
-        verifyPassword = mailPasswordUtils.createRandomPassword()
-        verifyEmail = request.POST.get("email", "")
-        SQLCommand.VerifyUserSQL(str(verifyId))
-        SQLCommand.setUserPassword(verifyId, verifyPassword)
-        mailPasswordUtils.sendVerificationMail(verifyEmail, verifyPassword)
-        return HttpResponse("Success!")
+        # Verify button is clicked
+        print("button: " + request.POST.get("button", ""))
+        if request.POST.get("button", "") == "Verify":
+            verifyId = request.POST.get("id", "")
+            verifyPassword = mailPasswordUtils.createRandomPassword()
+            verifyEmail = request.POST.get("email", "")
+            SQLCommand.VerifyUserSQL(str(verifyId))
+            SQLCommand.setUserPassword(verifyId, verifyPassword)
+            mailPasswordUtils.sendVerificationMail(verifyEmail, verifyPassword)
+            return HttpResponse("User Verified!")
+        # Delete button is clicked
+        elif request.POST.get("button", "") == "Delete":
+            deleteId = request.POST.get("id", "")
+            SQLCommand.deleteUserSQL(deleteId)
+            return HttpResponse("User Deleted!")
+
     return HttpResponse("failed")
 
 def dragStore(request):
@@ -236,5 +244,17 @@ def showMessage(request):
     return render(request, 'hospitalsite/showMessage.html',{'messages':messages})
 
 
+def forgotPassword(request):
+    return render(request, 'hospitalsite/forgotPassword.html')
 
+
+def sendPassword(request):
+    if request.method == "POST":
+        userEmail = request.POST.get("email", "")
+        userPassword = SQLCommand.getUserPassword(userEmail)
+        mailPasswordUtils.sendForgottenPassword(userEmail, userPassword)
+        return HttpResponse("Success!")
+
+    else:
+        return HttpResponse("Failed!")
 
