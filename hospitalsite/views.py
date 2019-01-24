@@ -211,13 +211,14 @@ def sendMessage(request):
 
 def send(request):
     if request.method == "POST":
+        role = signInUserID[0]
         pId = request.POST.get("patientId", "")
         dId = request.POST.get("doctorId", "")
         subject = request.POST.get("subject", "")
         message = request.POST.get("message", "")
         patientId = SQLCommand.getPatientID(pId)
         doctorId = SQLCommand.getDoctorID(dId)
-        SQLCommand.insertMessage(patientId, doctorId, subject, message)
+        SQLCommand.insertMessage(patientId, doctorId, subject, message, role)
         return HttpResponse("Your message has been sent. please sign in again!")
     else:
         return HttpResponse("Failed!")
@@ -226,14 +227,11 @@ def showMessage(request):
     print ("this:")
     print (signInUserID)
     role = signInUserID[0]
-    if role =='1' :
+    if role == '1':
         idD =SQLCommand.reverseDoctorId(signInUserID)
-        print ("idD")
-        print(idD)
         messages = SQLCommand.getDoctorMessage(idD)
     elif role == '2':
         idP = SQLCommand.reversePatientId(signInUserID)
-        print ("idD")
         messages = SQLCommand.getPatientMessage(idP)
     return render(request, 'hospitalsite/showMessage.html',{'messages':messages})
 

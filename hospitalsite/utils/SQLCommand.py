@@ -93,9 +93,15 @@ def filterDrugs(time):
     name = dictfetchall(cursor)
     return name
 
-def insertMessage(patientId,doctorId,subject,message):
+
+def insertMessage(patientId,doctorId,subject,message, role):
     cursor = connection.cursor()
-    cursor.execute('INSERT INTO hospitalsite_message (idDoctor_id,idPatient_id,subject,text) VALUES (%s,%s,%s,%s)',[patientId,doctorId,subject,message])
+    fromPatient = int(role) - 1
+    print("role: " + str(fromPatient))
+    print("patientId: " + str(patientId))
+    print("doctorId: " + str(doctorId))
+    cursor.execute('INSERT INTO hospitalsite_message (idDoctor_id,idPatient_id,subject,text,fromPatient) VALUES (%s,%s,%s,%s,%s)',[str(patientId),str(doctorId),subject,message,str(fromPatient)])
+
 
 def reverseDoctorId(idDoctor):
     cursor = connection.cursor()
@@ -103,21 +109,34 @@ def reverseDoctorId(idDoctor):
     id = cursor.fetchone()[0]
     return id
 
+
 def reversePatientId(idPatient):
     cursor = connection.cursor()
     cursor.execute('SELECT id FROM hospitalsite_patient WHERE idP_id = %s', [str(idPatient)])
     id = cursor.fetchone()[0]
     return id
 
+
 def getDoctorMessage(idD):
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM hospitalsite_message WHERE idDoctor_id = %s', [idD])
+    cursor.execute('SELECT hospitalsite_doctor.idD_id AS idDoctor, hospitalsite_patient.idP_id AS idPatient, subject, text '
+                   'FROM hospitalsite_message, hospitalsite_doctor, hospitalsite_patient '
+                   'WHERE hospitalsite_message.idDoctor_id = hospitalsite_doctor.id AND '
+                   'hospitalsite_message.idPatient_id = hospitalsite_patient.id AND '
+                   'hospitalsite_message.idDoctor_id = %s AND '
+                   'hospitalsite_message.fromPatient = 1', [idD])
     messages = dictfetchall(cursor)
     return messages
 
+
 def getPatientMessage(idP):
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM hospitalsite_message WHERE idPatient_id = %s', [idP])
+    cursor.execute('SELECT hospitalsite_doctor.idD_id AS idDoctor, hospitalsite_patient.idP_id AS idPatient, subject, text '
+                   'FROM hospitalsite_message, hospitalsite_doctor, hospitalsite_patient '
+                   'WHERE hospitalsite_message.idDoctor_id = hospitalsite_doctor.id AND '
+                   'hospitalsite_message.idPatient_id = hospitalsite_patient.id AND '
+                   'hospitalsite_message.idPatient_id = %s AND '
+                   'hospitalsite_message.fromPatient = 0', [idP])
     messages = dictfetchall(cursor)
     return messages
 
