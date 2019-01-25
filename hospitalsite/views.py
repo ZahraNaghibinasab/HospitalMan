@@ -136,8 +136,8 @@ def handlePatient(request):
         row = request.POST.get("id", "")
         if request.POST.get("button", "") == "Accept":
             SQLCommand.DoctorAccept(row)
-        # elif request.post.get("button", "") == "Cancel":
-        #     SQLCommand.DoctorCancel(row)
+        elif request.POST.get("button", "") == "Cancel":
+            SQLCommand.DoctorCancel(row)
         # elif request.post.get("button", "") == "Need+Bed":
 
     return HttpResponse("failed")
