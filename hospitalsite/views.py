@@ -327,3 +327,15 @@ def reserveDoctor(request):
         return HttpResponse("Successfully reserved!")
     else:
         return HttpResponse("Reserve failed!")
+
+
+def showBed(request):
+    if request.method == "POST":
+        global signInUserID
+        pid = SQLCommand.getPatientID(signInUserID)
+        print(pid)
+        userBedInfo = SQLCommand.getUserBedInfo(pid)
+        print(userBedInfo)
+        return render(request, 'hospitalsite/showBed.html', {'beds': userBedInfo})
+    else:
+        return HttpResponse("No Bed is assigned!")

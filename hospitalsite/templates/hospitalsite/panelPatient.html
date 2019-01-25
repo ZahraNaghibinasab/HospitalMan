@@ -71,7 +71,8 @@
     </div>
     <div class="column">
         <h2>YOU CAN SEE YOUR BED: </h2>
-        <form action="showBed/">
+        <form action="showBed/" method="post">
+            {% csrf_token %}
             <input type="submit" value="Show your bed identities" id="button6"/>
         </form>
     </div>

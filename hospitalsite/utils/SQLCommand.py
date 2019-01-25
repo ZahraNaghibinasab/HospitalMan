@@ -244,9 +244,23 @@ def patientNeedsBed(idP_id, pid):
     # access first empty bed
     cursor.execute("SELECT id FROM hospitalsite_bed WHERE isEmpty = 1")
     emptyBedId = cursor.fetchone()[0]
+    # TODO: handle no bed available
 
     # add a new patientbed relation
     cursor.execute("INSERT INTO hospitalsite_patientbed (idBed_id, idPatient_id) VALUES(%s, %s)", [emptyBedId, pid])
 
     # bed is not empty anymore
     cursor.execute("UPDATE hospitalsite_bed SET isEmpty = 0 WHERE id = %s", [emptyBedId])
+
+
+def getUserBedInfo(pid):
+    cursor = connection.cursor()
+    # userBedId
+    cursor.execute("SELECT idBed_id from hospitalsite_patientbed WHERE idPatient_id = %s", [pid])
+    userBedId = cursor.fetchone()[0]
+
+    # userBedInfo
+    cursor.execute("SELECT * from hospitalsite_bed WHERE id = %s", [userBedId])
+    userBedInfo = dictfetchall(cursor)
+
+    return userBedInfo
