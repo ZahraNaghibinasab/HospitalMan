@@ -171,30 +171,34 @@ def managerPanel(request):
     log = dictfetchall(cursor)
     return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user, 'log': log})
 
+# def edit(request):
+#     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
+#     return render(request, 'hospitalsite/edit.html',{'user':user})
+
 def edit(request):
-    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
-    return render(request, 'hospitalsite/edit.html',{'user':user})
+    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [signInUserID])
+    return render(request, 'hospitalsite/edit.html', {'user': user})
 
-
-def editDoctor(request):
-    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
-    return render(request, 'hospitalsite/edit.html',{'user':user})
-
-
-def editPatient(request):
-    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
-    return render(request, 'hospitalsite/edit.html',{'user':user })
-
-
-def editReseption(request):
-    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
-    return render(request, 'hospitalsite/edit.html',{'user':user})
-
-
-def editAccountant(request):
-    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
-    return render(request, 'hospitalsite/edit.html',{'user':user})
-
+#
+# def editDoctor(request):
+#     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=1')
+#     return render(request, 'hospitalsite/edit.html',{'user':user})
+#
+#
+# def editPatient(request):
+#     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=2')
+#     return render(request, 'hospitalsite/edit.html',{'user':user })
+#
+#
+# def editReseption(request):
+#     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
+#     return render(request, 'hospitalsite/edit.html',{'user':user})
+#
+#
+# def editAccountant(request):
+#     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
+#     return render(request, 'hospitalsite/edit.html',{'user':user})
+#
 
 def editSuccess(request):
     if request.method == "POST":

@@ -48,6 +48,7 @@ class Bed(models.Model):
     buildingNum =  models.IntegerField()
     hallNum =  models.IntegerField()
     roomNum =  models.IntegerField()
+    isEmpty = models.BooleanField(default = True)
 
 class DrugStore(models.Model):
     idDrug = models.IntegerField(primary_key=True)

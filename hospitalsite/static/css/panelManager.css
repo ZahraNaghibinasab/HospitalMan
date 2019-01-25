@@ -161,6 +161,29 @@ h2{
 	opacity: 0.6;
 }
 
+#button6{
+    width: 260px;
+	height: 35px;
+	background:  	Tomato;
+	border: 1px solid 	Tomato;
+	cursor: pointer;
+	border-radius: 2px;
+	color: white;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+
+}
+
+#button6:hover{
+	opacity: 0.8;
+}
+
+#button6:active{
+	opacity: 0.6;
+}
 
 .column {
   background: "1.jpg";

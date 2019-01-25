@@ -24,9 +24,9 @@ urlpatterns = [
     path('patientPanel/', views.patientPanel, name='patientPanel'),
     path('reseptionPanel/', views.reseptionPanel, name='reseptionPanel'),
     path('accountantPanel/', views.accountantPanel, name='accountantPanel'),
-    path('signIn/enter/editDoctor/', views.editDoctor, name='editDoctor'),
-    path('signIn/enter/editPatient/', views.editPatient, name='editPatient'),
-    path('signIn/enter/editReseption/', views.editReseption, name='editReseption'),
-    path('signIn/enter/editAccountant/', views.editAccountant, name='editAccountant'),
+    # path('signIn/enter/editDoctor/', views.editDoctor, name='editDoctor'),
+    # path('signIn/enter/editPatient/', views.editPatient, name='editPatient'),
+    # path('signIn/enter/editReseption/', views.editReseption, name='editReseption'),
+    # path('signIn/enter/editAccountant/', views.editAccountant, name='editAccountant'),
 
 ]
