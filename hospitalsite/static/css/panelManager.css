@@ -136,6 +136,32 @@ h2{
 	opacity: 0.6;
 }
 
+
+#button5{
+	width: 200px;
+	height: 35px;
+	background:  	#32CD32;
+	border: 1px solid 	#32CD32;
+	cursor: pointer;
+	border-radius: 2px;
+	color: white;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+
+}
+
+#button5:hover{
+	opacity: 0.8;
+}
+
+#button5:active{
+	opacity: 0.6;
+}
+
+
 .column {
   background: "1.jpg";
   float: left;

@@ -31,21 +31,19 @@
           <tr>
              <th>Doctor Name</th>
             <th>Time</th>
-            <th>Check it</th>
+            <th>Reserve</th>
           <tr>
             {% for r in reserve %}
             <tr>
             <td>{{r.name}}</td>
             <td>{{r.time}}</td>
-            <form action="action">
-            <td><input type="radio" id="contactChoice" name="contact" value="mail"></td>
-            </form>
+              <td><form action="reserveDoctor/" >
+            <input type="submit" value="Reserve" id="button2" />
+        </form></td>
           </tr>
             {% endfor %}
         </table>
-         <form action="edit" >
-            <input type="submit" value="Reserve" id="button2" />
-        </form>
+
     </div>
     <div class="column">
           <table id="factor">

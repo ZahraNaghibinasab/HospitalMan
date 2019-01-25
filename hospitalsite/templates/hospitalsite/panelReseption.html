@@ -37,11 +37,11 @@
             <th>Check it</th>
              {% for r in reserve %}
           <tr>
-            <td>{{r.nameD}}</td>
-            <td>{{r.idD}}</td>
+            <td>{{r.user1.name}}</td>
+            <td>{{r.user1.id}}</td>
             <td>{{r.time}}</td>
-            <td>{{r.nameP}}</td>
-            <td>{{r.idP}}</td>
+            <td>{{r.user2.name}}</td>
+            <td>{{r.user2.id}}</td>
             <td>{{r.checked}}</td>
           </tr>
             {% endfor %}

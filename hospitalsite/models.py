@@ -40,6 +40,14 @@ class Reception(models.Model):
 
 class Patient(models.Model):
     idP = models.ForeignKey(User,on_delete=models.CASCADE)
+    bed = models.BooleanField(default= False)
+    # bedId =  models.ForeignKey(Bed,on_delete=models.CASCADE)
+
+class Bed(models.Model):
+    id = models.IntegerField(primary_key=True)
+    buildingNum =  models.IntegerField()
+    hallNum =  models.IntegerField()
+    roomNum =  models.IntegerField()
 
 class DrugStore(models.Model):
     idDrug = models.IntegerField(primary_key=True)

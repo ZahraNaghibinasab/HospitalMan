@@ -13,6 +13,8 @@ from .utils import mailPasswordUtils
 
 signInUserID =""
 
+patientID=""
+
 # Create your views here.
 
 # def hospital(request):
@@ -83,7 +85,14 @@ def enter(request):
                 return render(request, 'hospitalsite/panelPatient.html', {'patient': patient, 'drug':drug,'reserve': reserve})
             elif userRole == '3':
                 user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
-                return render(request, 'hospitalsite/edit.html', {'user': user})
+                idPatient = Reservation.objects.raw('SELECT idP_id FROM hospitalsite_reservation')
+                idPshow =SQLCommand.getP(idPatient)
+                idDoctor = Reservation.objects.raw('SELECT idD_id FROM hospitalsite_reservation')
+                idDshow = SQLCommand.getD(idDoctor)
+                namePatient = SQLCommand.getNameP(idPshow)
+                nameDoctor = SQLCommand.getNameD(idDshow)
+                reserve = SQLCommand.getReceptionTable(idDoctor, idDshow, idPatient,idPshow, nameDoctor, namePatient)
+                return render(request, 'hospitalsite/panelReseption.html', {'reseption': user, 'reserve': reserve})
             elif userRole == '4':
                 accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
                 return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
@@ -139,8 +148,13 @@ def patientPanel(request):
 
 def reseptionPanel(request):
     reseption = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=3')
-    idp = Reservation.objects.raw('SELECT idP_id FROM hospitalsite_reservation where ')
-    reserve = Reservation.objects.raw('SELECT * FROM hospitalsite_reservation')
+    idPatient = Reservation.objects.raw('SELECT idP_id FROM hospitalsite_reservation')
+    idPshow = SQLCommand.getP(idPatient)
+    idDoctor = Reservation.objects.raw('SELECT idD_id FROM hospitalsite_reservation')
+    idDshow = SQLCommand.getD(idDoctor)
+    namePatient = SQLCommand.getNameP(idPshow)
+    nameDoctor = SQLCommand.getNameD(idDshow)
+    reserve = SQLCommand.getReceptionTable(idDoctor, idDshow, idPatient, idPshow, nameDoctor, namePatient)
     return render(request, 'hospitalsite/panelReseption.html', {'reseption': reseption , 'reserve': reserve})
 
 
@@ -260,3 +274,9 @@ def sendPassword(request):
         return HttpResponse("Failed!")
 
 
+def cancel(request):
+
+    return HttpResponse("Your patient is canceled!")
+
+def accept(request):
+    return HttpResponse("Your patient is accepted!")

@@ -97,6 +97,7 @@ def getPatientID(idP):
     id = cursor.fetchone()[0]
     return id
 
+
 def getDoctorID(idD):
     cursor = connection.cursor()
     cursor.execute('SELECT id FROM hospitalsite_doctor WHERE idD_id = %s', [str(idD)])
@@ -154,6 +155,46 @@ def reversePatientId(idPatient):
     id = cursor.fetchone()[0]
     return id
 
+def getP(idPatient):
+    cursor = connection.cursor()
+    cursor.execute('SELECT idP_id FROM hospitalsite_patient WHERE id = %s', [str(idPatient)])
+    id = cursor.fetchone()
+    return id
+
+def getD(idDoctor):
+    cursor = connection.cursor()
+    cursor.execute('SELECT idD_id FROM hospitalsite_doctor WHERE id = %s', [str(idDoctor)])
+    id = cursor.fetchone()
+    return id
+
+def getNameP(idP):
+    cursor = connection.cursor()
+    cursor.execute('SELECT name FROM hospitalsite_user WHERE id = %s', [str(idP)])
+    name = cursor.fetchone()
+    return name
+
+
+def getNameD(idD):
+    cursor = connection.cursor()
+    cursor.execute('SELECT name FROM hospitalsite_user WHERE id = %s', [str(idD)])
+    name = cursor.fetchone()
+    return name
+
+def getReceptionTable(idD,idForignD,idP,idForignP,nameD,nameP):
+    cursor = connection.cursor()
+    cursor.execute('SELECT user1.name,user2.name,time,user1.id,user2.id,checked FROM hospitalsite_user as user1,hospitalsite_user as user2,hospital_reservation, hospital_doctor,hospital_patient'
+                   'WHERE  (hospital_reservation.idD_id = %s) and '
+                   '(hospital_reservation.idP_id = %s) and'
+                   '(hospital_reservation.idD_id = hospital_doctor.id) and'
+                   '(hospital_reservation.idP_id = hospital_patient.id) and'
+                   '(hospital_doctor.idD_id = %s) and'
+                   '(hospital_patient.idP_id = %s) and'
+                   '(user1.id = hospital_doctor.idD_id) and '
+                   '(user1.name = %s)and'
+                   '(user2.id = hospital_patient.idP_id) and '
+                   '(user2.name = %s',[str(idD),str(idP),str(idForignD),str(idForignP),str(nameD),str(nameP)])
+    receptTable = dictfetchall(cursor)
+    return receptTable
 
 def getDoctorMessage(idD):
     cursor = connection.cursor()

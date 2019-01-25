@@ -34,6 +34,7 @@
             <th>Status</th>
               <th>Accept Patient</th>
               <th>Cancel Patient</th>
+              <th>Need Bed</th>
              {% for t in doctorTable %}
           <tr>
             <td>{{t.name}}</td>
@@ -45,12 +46,13 @@
             <td><form action="cancel/" >
             <input type="submit" value="Cancel" id="button2" />
         </form></td>
+               <td><form action="needBed/" >
+            <input type="submit" value="Need Bed" id="button2" />
+        </form></td>
           </tr>
             {% endfor %}
         </table>
-         <form action="edit" >
-            <input type="submit" value="Verify This Users" id="button2" />
-        </form>
+
     </div>
       <div class="column">
           <h2>MESSAGING FROM HERE: </h2>
