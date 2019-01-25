@@ -87,3 +87,7 @@ class message(models.Model):
     subject = models.CharField(max_length=30)
     text = models.TextField()
     fromPatient = models.BooleanField(default=True)
+
+class patientBed(models.Model):
+    idPatient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    idBed = models.ForeignKey(Bed, on_delete=models.CASCADE)

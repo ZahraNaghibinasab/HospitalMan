@@ -83,7 +83,8 @@ def PatientRsvTable():
 
 def DoctorRsvTable(idD):
     cursor = connection.cursor()
-    cursor.execute('SELECT hospitalsite_reservation.id, time, name ,checked FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_patient,hospitalsite_doctor WHERE '
+    cursor.execute('SELECT hospitalsite_reservation.id AS reserveID, time, name ,checked, hospitalsite_patient.idP_id, hospitalsite_patient.id AS pid '
+                   'FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_patient,hospitalsite_doctor WHERE '
                     '(hospitalsite_patient.id = hospitalsite_reservation.idP_id) and '
                     '(hospitalsite_patient.idP_id = hospitalsite_user.id) and '
                     '(checked != 2 ) and'
@@ -235,3 +236,17 @@ def reserveTimeByPatient(row, patientId):
     cursor.execute("UPDATE hospitalsite_reservation SET checked = 1 WHERE id = %s", [row])
     cursor.execute("UPDATE hospitalsite_reservation SET idP_id = %s WHERE id = %s", [str(patientId), row])
 
+
+def patientNeedsBed(idP_id, pid):
+    cursor = connection.cursor()
+    # person has bed
+    cursor.execute("UPDATE hospitalsite_patient SET bed = 1 WHERE idP_id = %s", [idP_id])
+    # access first empty bed
+    cursor.execute("SELECT id FROM hospitalsite_bed WHERE isEmpty = 1")
+    emptyBedId = cursor.fetchone()[0]
+
+    # add a new patientbed relation
+    cursor.execute("INSERT INTO hospitalsite_patientbed (idBed_id, idPatient_id) VALUES(%s, %s)", [emptyBedId, pid])
+
+    # bed is not empty anymore
+    cursor.execute("UPDATE hospitalsite_bed SET isEmpty = 0 WHERE id = %s", [emptyBedId])

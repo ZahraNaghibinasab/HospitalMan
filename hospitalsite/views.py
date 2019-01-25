@@ -78,6 +78,7 @@ def enter(request):
             if userRole == '1':
                 doctorTable = SQLCommand.DoctorRsvTable(signInUserID)
                 doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [loginId])
+                print(doctorTable)
                 return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor, 'doctorTable': doctorTable})
             elif userRole == '2':
                 patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [loginId])
@@ -133,12 +134,18 @@ def verifyUser(request):
 def handlePatient(request):
     if request.method == "POST":
         # Accept button is pressed
-        row = request.POST.get("id", "")
+        row = request.POST.get("reserveID", "")
         if request.POST.get("button", "") == "Accept":
             SQLCommand.DoctorAccept(row)
+            return HttpResponse("Patient Reservation Accepted!")
         elif request.POST.get("button", "") == "Cancel":
             SQLCommand.DoctorCancel(row)
-        # elif request.post.get("button", "") == "Need+Bed":
+            return HttpResponse("Patient Reservation Canceled!")
+        elif request.POST.get("button", "") == "Need Bed":
+            idP_id = request.POST.get("idP_id", "")
+            pid = request.POST.get("pid", "")
+            SQLCommand.patientNeedsBed(idP_id, pid)
+            return HttpResponse("Bed Assigned to the patient!")
 
     return HttpResponse("failed")
 
