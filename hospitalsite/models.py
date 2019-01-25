@@ -51,9 +51,9 @@ class Patient(models.Model):
 
 class Bed(models.Model):
     id = models.IntegerField(primary_key=True)
-    buildingNum =  models.IntegerField()
-    hallNum =  models.IntegerField()
-    roomNum =  models.IntegerField()
+    buildingNum = models.IntegerField()
+    hallNum = models.IntegerField()
+    roomNum = models.IntegerField()
     isEmpty = models.BooleanField(default = True)
 
 

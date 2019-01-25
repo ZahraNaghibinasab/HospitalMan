@@ -113,7 +113,6 @@ def enter(request):
 def verifyUser(request):
     if request.method == "POST":
         # Verify button is clicked
-        print("button: " + request.POST.get("button", ""))
         if request.POST.get("button", "") == "Verify":
             verifyId = request.POST.get("id", "")
             verifyPassword = mailPasswordUtils.createRandomPassword()
@@ -127,6 +126,19 @@ def verifyUser(request):
             deleteId = request.POST.get("id", "")
             SQLCommand.deleteUserSQL(deleteId)
             return HttpResponse("User Deleted!")
+
+    return HttpResponse("failed")
+
+
+def handlePatient(request):
+    if request.method == "POST":
+        # Accept button is pressed
+        row = request.POST.get("id", "")
+        if request.POST.get("button", "") == "Accept":
+            SQLCommand.DoctorAccept(row)
+        # elif request.post.get("button", "") == "Cancel":
+        #     SQLCommand.DoctorCancel(row)
+        # elif request.post.get("button", "") == "Need+Bed":
 
     return HttpResponse("failed")
 

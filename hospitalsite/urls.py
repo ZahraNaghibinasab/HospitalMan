@@ -11,6 +11,7 @@ urlpatterns = [
     path('dragStore/filter/', views.filter, name='filter'),
     path('success/',views.success, name='success'),
     path('signIn/enter/', views.enter, name='enter'),
+    path('signIn/enter/handlePatinet/', views.handlePatient, name='handlePatient'),
     path('signIn/enter/accept/', views.accept, name='accept'),
     path('signIn/enter/cancel/', views.cancel, name='cancel'),
     path('signIn/enter/reserveDoctor/', views.reserveDoctor, name='reserveDoctor'),

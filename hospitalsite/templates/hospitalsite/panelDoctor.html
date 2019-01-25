@@ -12,55 +12,54 @@
         <h1>Identities</h1>
         <p>
             {% for m in doctor %}
-            <h3>NAME:</h3>
-           <h2>{{m.name}}</h2>
-            <h3>ID:</h3>
-            <h2>{{m.id}}</h2>
-            <h3>E-MAIL:</h3>
-            <h2>{{m.Email}}</h2>
-            <h3>TEL-NUMBER:</h3>
-            <h2>{{m.tel}}</h2>
-            {% endfor %}
+        <h3>NAME:</h3>
+        <h2>{{m.name}}</h2>
+        <h3>ID:</h3>
+        <h2>{{m.id}}</h2>
+        <h3>E-MAIL:</h3>
+        <h2>{{m.Email}}</h2>
+        <h3>TEL-NUMBER:</h3>
+        <h2>{{m.tel}}</h2>
+        {% endfor %}
         </p>
-        <form action="edit" >
-            <input type="submit" value="Edit Profile" id="button" />
+        <form action="edit">
+            <input type="submit" value="Edit Profile" id="button"/>
         </form>
     </div>
     <div class="column">
         <table id="users">
-          <tr>
-            <th>Name-Patient</th>
-            <th>Time</th>
-            <th>Status</th>
-              <th>Accept Patient</th>
-              <th>Cancel Patient</th>
-              <th>Need Bed</th>
-             {% for t in doctorTable %}
-          <tr>
-            <td>{{t.name}}</td>
-            <td>{{t.time}}</td>
-            <td>{{t.checked}}</td>
-            <td><form action="accept/" >
-            <input type="submit" value="Accept" id="button2" />
-        </form></td>
-            <td><form action="cancel/" >
-            <input type="submit" value="Cancel" id="button2" />
-        </form></td>
-               <td><form action="needBed/" >
-            <input type="submit" value="Need Bed" id="button2" />
-        </form></td>
-          </tr>
+            <tr>
+                <th>Name-Patient</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Accept Patient</th>
+                <th>Cancel Patient</th>
+                <th>Need Bed</th>
+                {% for t in doctorTable %}
+            <tr>
+                <form action="handlePatinet/" method="post">
+                    {% csrf_token %}
+                    <td>{{t.name}}</td>
+                    <td>{{t.time}}</td>
+                    <td>{{t.checked}}</td>
+                    <input type="hidden" name="id" value="{{t.id}}">
+                    <td><input type="submit" value="Accept" name="button" id="button2"/></td>
+                    <td><input type="submit" value="Cancel" name="button" id="button2"/></td>
+                    <td><input type="submit" value="Need Bed" name="button" id="button2"/></td>
+                </form>
+
+            </tr>
             {% endfor %}
         </table>
 
     </div>
-      <div class="column">
-          <h2>MESSAGING FROM HERE: </h2>
-         <form action="sendMessage/" >
-            <input type="submit" value="Send Massage to doctor" id="button3" />
+    <div class="column">
+        <h2>MESSAGING FROM HERE: </h2>
+        <form action="sendMessage/">
+            <input type="submit" value="Send Massage to doctor" id="button3"/>
         </form>
-         <form action="showMessage/" >
-            <input type="submit" value="Show my messages" id="button4" />
+        <form action="showMessage/">
+            <input type="submit" value="Show my messages" id="button4"/>
         </form>
     </div>
 </div>

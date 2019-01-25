@@ -63,13 +63,13 @@ def Reservation(idD,Date,idP):
 
 
 
-def DoctorCancel(id):
+def DoctorCancel(row):
     cursor = connection.cursor()
-    cursor.execute('UPDATE hospitalsite_reservation SET checked= 2 WHERE idP_id = %s',str(id))
+    cursor.execute('UPDATE hospitalsite_reservation SET checked = 0 WHERE id = %s', [row])
 
-def DoctorAccept(id):
+def DoctorAccept(row):
     cursor = connection.cursor()
-    cursor.execute('UPDATE hospitalsite_reservation SET checked= 1 WHERE idP_id = %s', str(id))
+    cursor.execute('UPDATE hospitalsite_reservation SET checked = 2 WHERE id = %s', [row])
 
 def PatientRsvTable():
     cursor = connection.cursor()
@@ -80,9 +80,10 @@ def PatientRsvTable():
     row = dictfetchall(cursor)
     return row
 
+
 def DoctorRsvTable(idD):
     cursor = connection.cursor()
-    cursor.execute('SELECT time, name ,checked  FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_patient,hospitalsite_doctor WHERE '
+    cursor.execute('SELECT hospitalsite_reservation.id, time, name ,checked FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_patient,hospitalsite_doctor WHERE '
                     '(hospitalsite_patient.id = hospitalsite_reservation.idP_id) and '
                     '(hospitalsite_patient.idP_id = hospitalsite_user.id) and '
                     '(checked != 2 ) and'
