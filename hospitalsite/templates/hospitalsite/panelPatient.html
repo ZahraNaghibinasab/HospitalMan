@@ -12,63 +12,67 @@
         <h1>Identities</h1>
         <p>
             {% for m in patient %}
-            <h3>NAME:</h3>
-           <h2>{{m.name}}</h2>
-            <h3>ID:</h3>
-            <h2>{{m.id}}</h2>
-            <h3>E-MAIL:</h3>
-            <h2>{{m.Email}}</h2>
-            <h3>TEL-NUMBER:</h3>
-            <h2>{{m.tel}}</h2>
-            {% endfor %}
+        <h3>NAME:</h3>
+        <h2>{{m.name}}</h2>
+        <h3>ID:</h3>
+        <h2>{{m.id}}</h2>
+        <h3>E-MAIL:</h3>
+        <h2>{{m.Email}}</h2>
+        <h3>TEL-NUMBER:</h3>
+        <h2>{{m.tel}}</h2>
+        {% endfor %}
         </p>
-        <form action="edit" >
-            <input type="submit" value="Edit Profile" id="button" />
+        <form action="edit">
+            <input type="submit" value="Edit Profile" id="button"/>
         </form>
     </div>
     <div class="column">
         <table id="users">
-          <tr>
-             <th>Doctor Name</th>
-            <th>Time</th>
-            <th>Reserve</th>
-          <tr>
-            {% for r in reserve %}
             <tr>
-            <td>{{r.name}}</td>
-            <td>{{r.time}}</td>
-              <td><form action="reserveDoctor/" >
-            <input type="submit" value="Reserve" id="button2" />
-        </form></td>
-          </tr>
+                <th>Doctor Name</th>
+                <th>Time</th>
+                <th>Reserve</th>
+            <tr>
+                {% for r in reserve %}
+            <tr>
+                <td>{{r.name}}</td>
+                <td>{{r.time}}</td>
+                <td>
+                    <form action="reserveDoctor/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{r.id}}"/>
+                        <input type="submit" value="Reserve" id="button2"/>
+                    </form>
+                </td>
+            </tr>
             {% endfor %}
         </table>
 
     </div>
     <div class="column">
-          <table id="factor">
-          <tr>
-             <th>Drug</th>
-              {% for d in drug %}
-          <tr>
-            <td>{{d.name}}</td>
-              {% endfor %}
-          </tr>
-          </table>
+        <table id="factor">
+            <tr>
+                <th>Drug</th>
+                {% for d in drug %}
+            <tr>
+                <td>{{d.name}}</td>
+                {% endfor %}
+            </tr>
+        </table>
     </div>
-      <div class="column">
-          <h2>MESSAGING FROM HERE: </h2>
-         <form action="sendMessage/" >
-            <input type="submit" value="Send Massage to doctor" id="button3" />
+    <div class="column">
+        <h2>MESSAGING FROM HERE: </h2>
+        <form action="sendMessage/">
+            <input type="submit" value="Send Massage to doctor" id="button3"/>
         </form>
-         <form action="showMessage/" >
-            <input type="submit" value="Show my messages" id="button4" />
+        <form action="showMessage/">
+            <input type="submit" value="Show my messages" id="button4"/>
         </form>
     </div>
-        <div class="column">
-          <h2>YOU CAN SEE YOUR BED: </h2>
-         <form action="showBed/" >
-            <input type="submit" value="Show your bed identities" id="button6" />
+    <div class="column">
+        <h2>YOU CAN SEE YOUR BED: </h2>
+        <form action="showBed/">
+            <input type="submit" value="Show your bed identities" id="button6"/>
         </form>
     </div>
 </div>

@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class User(models.Model):
     id = models.CharField(max_length=6, primary_key=True)
     Email = models.CharField(max_length=60, blank=True, null=True)
@@ -29,19 +30,24 @@ class User(models.Model):
 class Manager(models.Model):
     idM = models.ForeignKey(User,on_delete=models.CASCADE)
 
+
 class Doctor(models.Model):
     idD = models.ForeignKey(User,on_delete=models.CASCADE)
+
 
 class Accountant(models.Model):
     idA = models.ForeignKey(User,on_delete=models.CASCADE)
 
+
 class Reception(models.Model):
     idR = models.ForeignKey(User,on_delete=models.CASCADE)
+
 
 class Patient(models.Model):
     idP = models.ForeignKey(User,on_delete=models.CASCADE)
     bed = models.BooleanField(default= False)
     # bedId =  models.ForeignKey(Bed,on_delete=models.CASCADE)
+
 
 class Bed(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -50,10 +56,12 @@ class Bed(models.Model):
     roomNum =  models.IntegerField()
     isEmpty = models.BooleanField(default = True)
 
+
 class DrugStore(models.Model):
     idDrug = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     expiredDate = models.CharField(max_length=11)
+
 
 class receipt(models.Model):
     id = models.CharField(max_length=6, primary_key=True)
@@ -67,9 +75,11 @@ class Reservation(models.Model):
     idP = models.ForeignKey(Patient, on_delete=models.CASCADE, blank=True, null=True)
     checked = models.BooleanField(default=False)
 
+
 class Prescription(models.Model):
     idPatient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     idDrug = models.ForeignKey(DrugStore, on_delete=models.CASCADE)
+
 
 class message(models.Model):
     idPatient = models.ForeignKey(Patient, on_delete=models.CASCADE)

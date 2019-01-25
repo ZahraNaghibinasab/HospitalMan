@@ -13,6 +13,7 @@ urlpatterns = [
     path('signIn/enter/', views.enter, name='enter'),
     path('signIn/enter/accept/', views.accept, name='accept'),
     path('signIn/enter/cancel/', views.cancel, name='cancel'),
+    path('signIn/enter/reserveDoctor/', views.reserveDoctor, name='reserveDoctor'),
     path('signIn/enter/sendMessage/', views.sendMessage, name='sendMessage'),
     path('signIn/enter/sendMessage/send/', views.send, name='send'),
     path('signIn/enter/showMessage/', views.showMessage, name='showMessage'),

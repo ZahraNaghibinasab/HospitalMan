@@ -4,16 +4,17 @@ from .models import receipt
 from .models import DrugStore
 from .models import Reservation
 from .models import Prescription
-from .forms import UserForm , UserEditForm
+from .forms import UserForm, UserEditForm
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.db import connection
 from .utils import SQLCommand
 from .utils import mailPasswordUtils
 
-signInUserID =""
+signInUserID = ""
 
-patientID=""
+patientID = ""
+
 
 # Create your views here.
 
@@ -28,8 +29,9 @@ def dictfetchall(cursor):
         for row in cursor.fetchall()
     ]
 
+
 def signIn(request):
-    return render(request,'hospitalsite/signIn.html')
+    return render(request, 'hospitalsite/signIn.html')
 
 
 def signUp(request):
@@ -41,7 +43,9 @@ def success(request):
         form = UserForm(request.POST)
         if form.is_valid():
             cursor = connection.cursor()
-            cursor.execute('INSERT INTO hospitalsite_user (name , id , tel , Email) VALUES (%s , %s , %s , %s) ', [str(form.cleaned_data['name']), str(form.cleaned_data['id']),str(form.cleaned_data['tel']), str(form.cleaned_data['Email'])]
+            cursor.execute('INSERT INTO hospitalsite_user (name , id , tel , Email) VALUES (%s , %s , %s , %s) ',
+                           [str(form.cleaned_data['name']), str(form.cleaned_data['id']), str(form.cleaned_data['tel']),
+                            str(form.cleaned_data['Email'])]
                            )
             userid = request.POST.get("id", "")
             userRole = userid[0]
@@ -59,8 +63,6 @@ def success(request):
             elif userRole == '5':
                 cursor.execute('INSERT into hospitalsite_manager (idM_id) VALUES (%s)', [userid])
 
-
-
     return HttpResponse("Success!")
 
 
@@ -75,36 +77,38 @@ def enter(request):
             print(userRole)
             if userRole == '1':
                 doctorTable = SQLCommand.DoctorRsvTable(signInUserID)
-                doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
-                return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor , 'doctorTable':doctorTable})
+                doctor = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [loginId])
+                return render(request, 'hospitalsite/panelDoctor.html', {'doctor': doctor, 'doctorTable': doctorTable})
             elif userRole == '2':
-                patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
+                patient = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [loginId])
                 idP = SQLCommand.getPatientID(loginId)
                 drug = SQLCommand.getPatientDrugNames(idP)
                 reserve = SQLCommand.PatientRsvTable()
-                return render(request, 'hospitalsite/panelPatient.html', {'patient': patient, 'drug':drug,'reserve': reserve})
+                return render(request, 'hospitalsite/panelPatient.html',
+                              {'patient': patient, 'drug': drug, 'reserve': reserve})
             elif userRole == '3':
-                user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
+                user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [loginId])
                 idPatient = Reservation.objects.raw('SELECT idP_id FROM hospitalsite_reservation')
-                idPshow =SQLCommand.getP(idPatient)
+                idPshow = SQLCommand.getP(idPatient)
                 idDoctor = Reservation.objects.raw('SELECT idD_id FROM hospitalsite_reservation')
                 idDshow = SQLCommand.getD(idDoctor)
                 namePatient = SQLCommand.getNameP(idPshow)
                 nameDoctor = SQLCommand.getNameD(idDshow)
-                reserve = SQLCommand.getReceptionTable(idDoctor, idDshow, idPatient,idPshow, nameDoctor, namePatient)
+                reserve = SQLCommand.getReceptionTable(idDoctor, idDshow, idPatient, idPshow, nameDoctor, namePatient)
                 return render(request, 'hospitalsite/panelReseption.html', {'reseption': user, 'reserve': reserve})
             elif userRole == '4':
-                accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
+                accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [loginId])
                 return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant})
             elif userRole == '5':
-                manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [loginId])
+                manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [loginId])
                 user = User.objects.raw('SELECT * FROM hospitalsite_user ')
                 cursor = connection.cursor()
                 cursor.execute('SELECT * FROM django_admin_log')
                 log = dictfetchall(cursor)
-                return render(request, 'hospitalsite/panelManager.html', {'manager': manager , 'user':user , 'log':log})
+                return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user, 'log': log})
         else:
             return HttpResponse("You are not registered!")
+
 
 def verifyUser(request):
     if request.method == "POST":
@@ -126,9 +130,11 @@ def verifyUser(request):
 
     return HttpResponse("failed")
 
+
 def dragStore(request):
     drug = DrugStore.objects.raw('SELECT * FROM hospitalsite_drugStore ')
-    return render(request,'hospitalsite/dragStore.html',{'drug':drug})
+    return render(request, 'hospitalsite/dragStore.html', {'drug': drug})
+
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
@@ -155,13 +161,14 @@ def reseptionPanel(request):
     namePatient = SQLCommand.getNameP(idPshow)
     nameDoctor = SQLCommand.getNameD(idDshow)
     reserve = SQLCommand.getReceptionTable(idDoctor, idDshow, idPatient, idPshow, nameDoctor, namePatient)
-    return render(request, 'hospitalsite/panelReseption.html', {'reseption': reseption , 'reserve': reserve})
+    return render(request, 'hospitalsite/panelReseption.html', {'reseption': reseption, 'reserve': reserve})
 
 
 def accountantPanel(request):
     accountant = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=4')
     user = User.objects.raw('SELECT * FROM hospitalsite_receipt ')
-    return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant , 'user':user})
+    return render(request, 'hospitalsite/panelAccountant.html', {'accountant': accountant, 'user': user})
+
 
 def managerPanel(request):
     manager = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
@@ -171,13 +178,15 @@ def managerPanel(request):
     log = dictfetchall(cursor)
     return render(request, 'hospitalsite/panelManager.html', {'manager': manager, 'user': user, 'log': log})
 
+
 # def edit(request):
 #     user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE role=5')
 #     return render(request, 'hospitalsite/edit.html',{'user':user})
 
 def edit(request):
-    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ' , [signInUserID])
+    user = User.objects.raw('SELECT * FROM hospitalsite_user WHERE id = %s ', [signInUserID])
     return render(request, 'hospitalsite/edit.html', {'user': user})
+
 
 #
 # def editDoctor(request):
@@ -214,16 +223,17 @@ def editSuccess(request):
             age=COALESCE(%s, age), \
             address=COALESCE(%s, address), \
             postalCode=COALESCE(%s, postalCode) \
-            WHERE role=5',[str(form.cleaned_data['name']),
-            str(form.cleaned_data['tel']),
-            (form.cleaned_data['weight']),
-            (form.cleaned_data['height']),
-            (form.cleaned_data['gender']),
-            (form.cleaned_data['age']),
-            str(form.cleaned_data['address']),
-            str(form.cleaned_data['postalCode'])])
+            WHERE role=5', [str(form.cleaned_data['name']),
+                            str(form.cleaned_data['tel']),
+                            (form.cleaned_data['weight']),
+                            (form.cleaned_data['height']),
+                            (form.cleaned_data['gender']),
+                            (form.cleaned_data['age']),
+                            str(form.cleaned_data['address']),
+                            str(form.cleaned_data['postalCode'])])
 
     return HttpResponse("Success!")
+
 
 def filter(request):
     if request.method == "POST":
@@ -231,10 +241,12 @@ def filter(request):
         print("drugdate: " + str(drugDate))
         drugNameID = SQLCommand.filterDrugs(drugDate)
         print(drugNameID)
-        return render(request, 'hospitalsite/filter.html',{'drugNameID':drugNameID})
+        return render(request, 'hospitalsite/filter.html', {'drugNameID': drugNameID})
+
 
 def sendMessage(request):
     return render(request, 'hospitalsite/sendMessage.html')
+
 
 def send(request):
     if request.method == "POST":
@@ -250,17 +262,18 @@ def send(request):
     else:
         return HttpResponse("Failed!")
 
+
 def showMessage(request):
-    print ("this:")
-    print (signInUserID)
+    print("this:")
+    print(signInUserID)
     role = signInUserID[0]
     if role == '1':
-        idD =SQLCommand.reverseDoctorId(signInUserID)
+        idD = SQLCommand.reverseDoctorId(signInUserID)
         messages = SQLCommand.getDoctorMessage(idD)
     elif role == '2':
         idP = SQLCommand.reversePatientId(signInUserID)
         messages = SQLCommand.getPatientMessage(idP)
-    return render(request, 'hospitalsite/showMessage.html',{'messages':messages})
+    return render(request, 'hospitalsite/showMessage.html', {'messages': messages})
 
 
 def forgotPassword(request):
@@ -279,8 +292,19 @@ def sendPassword(request):
 
 
 def cancel(request):
-
     return HttpResponse("Your patient is canceled!")
+
 
 def accept(request):
     return HttpResponse("Your patient is accepted!")
+
+
+def reserveDoctor(request):
+    if request.method == "POST":
+        global signInUserID
+        row = request.POST.get("id", "")
+        patientId = SQLCommand.getPatientID(signInUserID)
+        SQLCommand.reserveTimeByPatient(row, patientId)
+        return HttpResponse("Successfully reserved!")
+    else:
+        return HttpResponse("Reserve failed!")

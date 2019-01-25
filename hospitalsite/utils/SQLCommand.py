@@ -73,7 +73,7 @@ def DoctorAccept(id):
 
 def PatientRsvTable():
     cursor = connection.cursor()
-    cursor.execute('SELECT time, name FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_doctor WHERE '
+    cursor.execute('SELECT time, name, hospitalsite_reservation.id FROM hospitalsite_reservation,hospitalsite_user,hospitalsite_doctor WHERE '
                     '(hospitalsite_doctor.id = hospitalsite_reservation.idD_id) and '
                     '(hospitalsite_doctor.idD_id = hospitalsite_user.id) and'
                     '(checked = 0)')
@@ -91,6 +91,7 @@ def DoctorRsvTable(idD):
     row = dictfetchall(cursor)
     return row
 
+
 def getPatientID(idP):
     cursor = connection.cursor()
     cursor.execute('SELECT id FROM hospitalsite_patient WHERE idP_id = %s', [str(idP)])
@@ -104,11 +105,13 @@ def getDoctorID(idD):
     id = cursor.fetchone()[0]
     return id
 
+
 def getDrugId(idP):
     cursor = connection.cursor()
     cursor.execute('SELECT idDrug_id FROM hospitalsite_Prescription WHERE idPatient_id = % s', [idP])
     id = cursor.fetchone()[0]
     return id
+
 
 def getDrugName(id):
     cursor = connection.cursor()
@@ -116,11 +119,12 @@ def getDrugName(id):
     name = cursor.fetchone()[0]
     return name
 
+
 def getPatientDrugNames(idP):
     cursor = connection.cursor()
-    cursor.execute('SELECT name FROM hospitalsite_drugStore, hospitalsite_Prescription WHERE '
-                   'hospitalsite_drugStore.idDrug = hospitalsite_Prescription.idDrug_id and '
-                   'hospitalsite_Prescription.idPatient_id =%s',[idP])
+    cursor.execute('SELECT name FROM hospitalsite_drugstore, hospitalsite_prescription WHERE '
+                   'hospitalsite_drugstore.idDrug = hospitalsite_prescription.idDrug_id and '
+                   'hospitalsite_prescription.idPatient_id =%s',[idP])
     name = dictfetchall(cursor)
     return name
 
@@ -155,17 +159,20 @@ def reversePatientId(idPatient):
     id = cursor.fetchone()[0]
     return id
 
+
 def getP(idPatient):
     cursor = connection.cursor()
     cursor.execute('SELECT idP_id FROM hospitalsite_patient WHERE id = %s', [str(idPatient)])
     id = cursor.fetchone()
     return id
 
+
 def getD(idDoctor):
     cursor = connection.cursor()
     cursor.execute('SELECT idD_id FROM hospitalsite_doctor WHERE id = %s', [str(idDoctor)])
     id = cursor.fetchone()
     return id
+
 
 def getNameP(idP):
     cursor = connection.cursor()
@@ -179,6 +186,7 @@ def getNameD(idD):
     cursor.execute('SELECT name FROM hospitalsite_user WHERE id = %s', [str(idD)])
     name = cursor.fetchone()
     return name
+
 
 def getReceptionTable(idD,idForignD,idP,idForignP,nameD,nameP):
     cursor = connection.cursor()
@@ -195,6 +203,7 @@ def getReceptionTable(idD,idForignD,idP,idForignP,nameD,nameP):
                    '(user2.name = %s',[str(idD),str(idP),str(idForignD),str(idForignP),str(nameD),str(nameP)])
     receptTable = dictfetchall(cursor)
     return receptTable
+
 
 def getDoctorMessage(idD):
     cursor = connection.cursor()
@@ -218,4 +227,10 @@ def getPatientMessage(idP):
                    'hospitalsite_message.fromPatient = 0', [idP])
     messages = dictfetchall(cursor)
     return messages
+
+
+def reserveTimeByPatient(row, patientId):
+    cursor = connection.cursor()
+    cursor.execute("UPDATE hospitalsite_reservation SET checked = 1 WHERE id = %s", [row])
+    cursor.execute("UPDATE hospitalsite_reservation SET idP_id = %s WHERE id = %s", [str(patientId), row])
 
